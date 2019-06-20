@@ -1,0 +1,93 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Dosis|Nunito+Sans|Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+@import url('https://use.typekit.net/cvm3oli.css');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Font-Awesome
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-color: white !important;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+#app {
+  width: 100%;
+}
+
+.section-heading-container {
+  margin-bottom: 40px;
+}
+
+
+
+h2.section-heading {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 40px !important;
+  font-weight: bold !important;
+  margin-bottom: 5px !important;
+  color: #484848 !important;
+}
+
+.row-no-margin {
+  margin: 0 !important;
+}
+
+.app-container {
+  width: 70% !important;
+}
+
+.logo-image {
+  width: 200px;
+}
+
+
+@media screen and (max-width: 1524px) {
+  .app-container {
+    width: 80% !important;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .app-container {
+    width: 85% !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .app-container {
+    width: 90% !important;
+  }
+  .logo-image {
+    width: 180px;
+  }
+}
+
+
+@media screen and (max-width: 450px) {
+  .app-container {
+    width: 95% !important;
+  }
+}
+
+
+
+
