@@ -1893,7 +1893,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -1906,10 +1905,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     availableTutorials: function availableTutorials() {
-      return this.$store.getters.availableTutorials;
+      return this.$store.getters.tutorials;
     }
   },
-  mounted: function mounted() {// console.log(this.$route.matched)
+  mounted: function mounted() {
+    this.$store.dispatch('tutorialIndex');
   }
 });
 
@@ -7292,7 +7292,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".tutorials-info-section[data-v-d6c70f0c] {\n  padding-top: 100px;\n  padding-bottom: 50px;\n  background-color: whitesmoke;\n}\n.tutorials-page-header[data-v-d6c70f0c] {\n  width: 100%;\n}\n.tutorials-page-container[data-v-d6c70f0c] {\n  height: 100vh;\n}", ""]);
+exports.push([module.i, ".tutorials-info-section[data-v-d6c70f0c] {\n  padding-top: 100px;\n  padding-bottom: 50px;\n  background-color: whitesmoke;\n}\n.tutorials-list-container a[data-v-d6c70f0c] {\n  text-decoration: none;\n  color: inherit;\n  width: 49%;\n}\n.tutorials-list-container .tutorial-block[data-v-d6c70f0c] {\n  width: 100% !important;\n}\n.tutorials-page-header[data-v-d6c70f0c] {\n  width: 100%;\n}\n.tutorials-page-container[data-v-d6c70f0c] {\n  height: 100vh;\n}", ""]);
 
 // exports
 
@@ -40099,39 +40099,34 @@ var render = function() {
                 },
                 _vm._l(_vm.availableTutorials, function(tutorialInfo, index) {
                   return _c(
-                    "div",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: {
-                              name: "tutorial",
-                              params: {
-                                tutorial: tutorialInfo.title.toLowerCase()
-                              }
-                            }
+                    "router-link",
+                    {
+                      key: index,
+                      attrs: {
+                        to: {
+                          name: "tutorial",
+                          params: {
+                            tutorial: tutorialInfo.attributes.slug.toLowerCase()
                           }
-                        },
-                        [
-                          _c("tutorial-card", {
-                            key: index,
-                            attrs: {
-                              ratingInfo: tutorialInfo.ratingInfo,
-                              title: tutorialInfo.title,
-                              description: tutorialInfo.description,
-                              info: tutorialInfo.info,
-                              styles: tutorialInfo.styles
-                            }
-                          })
-                        ],
-                        1
-                      )
+                        }
+                      }
+                    },
+                    [
+                      _c("tutorial-card", {
+                        key: index,
+                        attrs: {
+                          ratingInfo: tutorialInfo.attributes.ratingInfo,
+                          title: tutorialInfo.attributes.title,
+                          description: tutorialInfo.attributes.description,
+                          info: tutorialInfo.attributes.info,
+                          styles: tutorialInfo.attributes.styles
+                        }
+                      })
                     ],
                     1
                   )
                 }),
-                0
+                1
               )
             ],
             1
@@ -59343,87 +59338,126 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    availableTutorials: [{
-      ratingInfo: {
-        rating: 4.7,
-        votes: 124
-      },
-      title: 'HTML 5',
-      description: "HTML is the very first technology, that everyone who wants to learn web development should" + " know. This tutorial is made for beginners who want to start learning web development from the " + "scratch!",
-      info: {
-        sections: 4,
-        lessons: 18,
-        quiz: 3,
-        type: 'text'
-      },
-      styles: {
-        headerBackground: "linear-gradient(to top, #b73e3e, #b23b3b, #ae3837, #a93434, #a53131)",
-        iconClass: "fa-10x fab fa-html5",
-        iconColor: "#e02e00"
-      }
-    }, {
-      ratingInfo: {
-        rating: 4.3,
-        votes: 47
-      },
-      title: 'CSS 3',
-      description: "CSS is the second of the two core technologies for building web pages and describes how html " + "elements should be displayed on screens. This tutorial is well suited for those who are just finished " + "learn html and is about to start learning css!",
-      info: {
-        sections: 3,
-        lessons: 24,
-        quiz: 7,
-        type: 'text'
-      },
-      styles: {
-        headerBackground: "linear-gradient(to right top, #006eba, #0078c2, #0083ca, #008dd2, #0098d9)",
-        iconClass: "fa-10x fab fa-css3-alt",
-        iconColor: "#006eba"
-      }
-    }, {
-      ratingInfo: {
-        rating: 4.9,
-        votes: 247
-      },
-      title: 'JavaScript',
-      description: "JavaScript is one of the most popular today's programming language which is widely used in " + "web development. This tutorial is made for beginners who has no experience in programming but want to start " + "learn JavaScript.",
-      info: {
-        sections: 6,
-        lessons: 29,
-        quiz: 5,
-        type: 'text'
-      },
-      styles: {
-        headerBackground: "linear-gradient(to right top, #f0c837, #f4cc2f, #f8d026, #fbd419, #ffd800)",
-        iconClass: "fa-7x fab fa-js",
-        iconColor: "#f1d63b"
-      }
-    }, {
-      ratingInfo: {
-        rating: 4.3,
-        votes: 87
-      },
-      title: 'PHP',
-      description: "PHP is a general-purpose programming language which was designed and widely used in " + "'server-side' web development. This tutorial will introduce you with PHP and teach how to build web pages dynamically!",
-      info: {
-        sections: 8,
-        lessons: 65,
-        quiz: 9,
-        type: 'text'
-      },
-      styles: {
-        headerBackground: "linear-gradient(to bottom, #777bb7, #7276b5, #6d71b2, #676cb0, #6267ad)",
-        iconClass: "fa-7x fab fa-php",
-        iconColor: "#777bb3"
-      }
-    }]
+    tutorials: null // availableTutorials: [
+    //     {
+    //         ratingInfo: {
+    //             rating: 4.7,
+    //             votes: 124
+    //         },
+    //         title: 'HTML 5',
+    //         slug: 'html_5',
+    //         description: "HTML is the very first technology, that everyone who wants to learn web development should" +
+    //             " know. This tutorial is made for beginners who want to start learning web development from the " +
+    //             "scratch!",
+    //         info: {
+    //             sections: 4,
+    //             lessons: 18,
+    //             quiz: 3,
+    //             type: 'text'
+    //
+    //         },
+    //         styles: {
+    //             headerBackground: "linear-gradient(to top, #b73e3e, #b23b3b, #ae3837, #a93434, #a53131)",
+    //             iconClass: "fa-10x fab fa-html5",
+    //             iconColor: "#e02e00",
+    //         },
+    //         sections: ['Introduction to HTML 5', ''],
+    //         lessons: []
+    //     },
+    //     {
+    //         ratingInfo: {
+    //             rating: 4.3,
+    //             votes: 47
+    //         },
+    //         title: 'CSS 3',
+    //         slug: 'css_3',
+    //         description: "CSS is the second of the two core technologies for building web pages and describes how html " +
+    //             "elements should be displayed on screens. This tutorial is well suited for those who are just finished " +
+    //             "learn html and is about to start learning css!",
+    //         info: {
+    //             sections: 3,
+    //             lessons: 24,
+    //             quiz: 7,
+    //             type: 'text'
+    //         },
+    //         styles: {
+    //             headerBackground: "linear-gradient(to right top, #006eba, #0078c2, #0083ca, #008dd2, #0098d9)",
+    //             iconClass:"fa-10x fab fa-css3-alt",
+    //             iconColor: "#006eba",
+    //         },
+    //         sections: [],
+    //         lessons: []
+    //     },
+    //     {
+    //         ratingInfo: {
+    //             rating: 4.9,
+    //             votes: 247
+    //         },
+    //         title: 'JavaScript',
+    //         slug: 'javascript',
+    //         description: "JavaScript is one of the most popular today's programming language which is widely used in " +
+    //             "web development. This tutorial is made for beginners who has no experience in programming but want to start " +
+    //             "learn JavaScript.",
+    //         info: {
+    //             sections: 6,
+    //             lessons: 29,
+    //             quiz: 5,
+    //             type: 'text'
+    //         },
+    //         styles: {
+    //             headerBackground: "linear-gradient(to right top, #f0c837, #f4cc2f, #f8d026, #fbd419, #ffd800)",
+    //             iconClass: "fa-7x fab fa-js",
+    //             iconColor: "#f1d63b",
+    //         },
+    //         sections: [],
+    //         lessons: []
+    //     },
+    //     {
+    //         ratingInfo: {
+    //             rating: 4.3,
+    //             votes: 87
+    //         },
+    //         title: 'PHP',
+    //         slug: 'php',
+    //         description: "PHP is a general-purpose programming language which was designed and widely used in " +
+    //             "'server-side' web development. This tutorial will introduce you with PHP and teach how to build web pages dynamically!",
+    //         info: {
+    //             sections: 8,
+    //             lessons: 65,
+    //             quiz: 9,
+    //             type: 'text'
+    //         },
+    //         styles: {
+    //             headerBackground: "linear-gradient(to bottom, #777bb7, #7276b5, #6d71b2, #676cb0, #6267ad)",
+    //             iconClass: "fa-7x fab fa-php",
+    //             iconColor: "#777bb3",
+    //         },
+    //         sections: [],
+    //         lessons: []
+    //     }
+    // ]
+
   },
   getters: {
-    availableTutorials: function availableTutorials(state) {
-      return state.availableTutorials;
+    tutorials: function tutorials(state) {
+      return state.tutorials;
     }
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    TUTORIAL_INDEX: function TUTORIAL_INDEX(state, payload) {
+      state.tutorials = payload;
+    }
+  },
+  actions: {
+    tutorialIndex: function tutorialIndex(_ref) {
+      var commit = _ref.commit;
+      axios.get('/api/tutorial').then(function (response) {
+        commit('TUTORIAL_INDEX', response.data.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),

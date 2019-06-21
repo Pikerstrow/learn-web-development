@@ -4,17 +4,16 @@
          <div class="app-container">
             <bread-crumbs :root="'main'"></bread-crumbs>
             <div class="row d-flex justify-content-between tutorials-list-container row-no-margin">
-               <div v-for="(tutorialInfo, index) in availableTutorials">
-                  <router-link :to="{name: 'tutorial', params: {tutorial: tutorialInfo.title.toLowerCase()}}">
-                     <tutorial-card :ratingInfo="tutorialInfo.ratingInfo"
-                        :title="tutorialInfo.title"
-                        :description="tutorialInfo.description"
-                        :info="tutorialInfo.info"
-                        :styles="tutorialInfo.styles"
-                        :key="index"
-                     ></tutorial-card>
-                  </router-link>
-               </div>
+               <router-link v-for="(tutorialInfo, index) in availableTutorials" :key="index"
+                            :to="{name: 'tutorial', params: {tutorial: tutorialInfo.attributes.slug.toLowerCase()}}">
+                  <tutorial-card :ratingInfo="tutorialInfo.attributes.ratingInfo"
+                                 :title="tutorialInfo.attributes.title"
+                                 :description="tutorialInfo.attributes.description"
+                                 :info="tutorialInfo.attributes.info"
+                                 :styles="tutorialInfo.attributes.styles"
+                                 :key="index"
+                  ></tutorial-card>
+               </router-link>
             </div>
          </div>
       </main>
@@ -38,11 +37,11 @@
         },
         computed: {
             availableTutorials() {
-               return this.$store.getters.availableTutorials
+                return this.$store.getters.tutorials
             }
         },
-        mounted(){
-            // console.log(this.$route.matched)
+        mounted() {
+            this.$store.dispatch('tutorialIndex');
         }
     }
 </script>
@@ -54,6 +53,19 @@
       background-color: whitesmoke;
 
    }
+
+   .tutorials-list-container {
+      a {
+         text-decoration: none;
+         color: inherit;
+         width: 49%;
+      }
+
+      .tutorial-block {
+         width: 100% !important;
+      }
+   }
+
    .tutorials-page-header {
       width: 100%;
    }

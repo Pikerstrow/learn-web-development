@@ -1,11 +1,10 @@
 <?php
 
-use App\Comment;
-use App\Course;
-use App\Lesson;
-use App\Section;
-use App\Subscriber;
-use App\User;
+use App\Models\Tutorial\Lesson;
+use App\Models\Tutorial\Rating;
+use App\Models\Tutorial\Tutorial;
+use App\Models\Tutorial\TutorialSection;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,11 +16,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Course::class, 6)->create();
-        factory(Section::class, 30)->create();
-        factory(Lesson::class, 158)->create();
-        factory(Comment::class, 40)->create();
-        factory(Subscriber::class, 67)->create();
+        factory(Tutorial::class, 4)->create();
+        factory(Rating::class, 4)->create();
+
+        /*Connecting tutorials to ratings*/
+        $tutorials = Tutorial::all();
+
+        $tutorials->each(function($tutorial){
+            $rating = Rating::whereNull('tutorial_id')->first();
+            $rating->update(['tutorial_id' => $tutorial->id]);
+        });
+
+        factory(TutorialSection::class, 32)->create();
+        factory(Lesson::class, 356)->create();
+
+
 
     }
 }
