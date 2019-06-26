@@ -1,26 +1,23 @@
 <template>
    <div style="width:inherit">
-<!--      <bread-crumbs :root="'main'"></bread-crumbs>-->
-      <header-section></header-section>
+      <main-page-header></main-page-header>
       <main class="d-flex flex-column justify-content-between">
-         <tutorials-block></tutorials-block>
-         <students-feedbacks></students-feedbacks>
-         <motivation></motivation>
+         <main-page-tutorials></main-page-tutorials>
+         <main-page-feedbacks></main-page-feedbacks>
+         <main-page-motivation></main-page-motivation>
       </main>
       <footer class="d-flex flex-column justify-content-between">
-         <landing-footer></landing-footer>
+         <app-footer></app-footer>
       </footer>
    </div>
 </template>
 
 <script>
-    import HeaderSection from './page_sections/HeaderSection';
-    import TutorialsBlock from './page_sections/TutorialsBlock';
-    import StudentsFeedbacks from './page_sections/StudentsFeedbacks';
-    import StarsRating from "stars-rating-component-vue";
-    import LandingFooter from "./page_sections/LandingFooter";
-    import Motivation from "./page_sections/Motivation";
-    import BreadCrumbs from "./page_sections/page_sections_components/BreadCrumbs";
+    import MainPageHeaderSection from './page_sections/main_page/MainPageHeaderSection';
+    import MainPageTutorialsSection from './page_sections/main_page/MainPageTutorialsSection';
+    import MainPageStudentsFeedbacksSection from './page_sections/main_page/MainPageStudentsFeedbacksSection';
+    import AppFooter from "./page_sections/shared/AppFooter";
+    import MainPageMotivationSpeechSection from "./page_sections/main_page/MainPageMotivationSpeechSection";
 
     export default {
         data() {
@@ -29,16 +26,11 @@
             }
         },
         components: {
-            'header-section': HeaderSection,
-            'tutorials-block': TutorialsBlock,
-            'students-feedbacks': StudentsFeedbacks,
-            'motivation': Motivation,
-            'landing-footer': LandingFooter,
-            'stars-rating': StarsRating,
-            'bread-crumbs': BreadCrumbs
-        },
-        mounted(){
-            console.log(this.$route);
+            'main-page-header': MainPageHeaderSection,
+            'main-page-tutorials': MainPageTutorialsSection,
+            'main-page-feedbacks': MainPageStudentsFeedbacksSection,
+            'main-page-motivation': MainPageMotivationSpeechSection,
+            'app-footer': AppFooter,
         }
     }
 </script>

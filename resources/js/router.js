@@ -3,27 +3,27 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 /*Imported components*/
-import Landing from './components/Landing';
-import Tutorials from './components/Tutorials';
-import Tutorial from './components/Tutorial';
-import NotFound from "./components/page_sections/NotFound";
+import MainPage from './components/MainPage';
+import TutorialsPage from './components/TutorialsPage';
+import TutorialPage from './components/TutorialPage';
+import NotFoundPage from "./components/NotFoundPage";
 
 
 const routes = [
     {
         path: '/',
         name: 'main',
-        component: Landing,
+        component: MainPage,
         meta: {
-            breadcrumb: 'main'
+
         }
     },
     {
-        path: '/tutorials',
+        path: '/tutorials_page',
         name: 'tutorials',
-        component: Tutorials,
+        component: TutorialsPage,
         meta: {
-            breadcrumb: 'tutorials',
+
             styles: {
                 backgroundColor: 'white',
                 borderBottom: 'none',
@@ -33,25 +33,25 @@ const routes = [
         }
     },
     {
-        path: '/tutorials/:tutorial',
+        path: '/tutorials_page/:tutorial',
         name: 'tutorial',
-        component: Tutorial,
+        component: TutorialPage,
         meta: {
-            breadcrumb: 'tutorial',
             styles: {
                 backgroundColor: 'white',
                 borderBottom: 'none',
                 position: 'fixed',
                 boxShadow: '0px 0px 11px 0px rgba(0,0,0,0.75)'
-            }
+            },
+
         }
     },
     {
         path: '/*',
         name: 'not-found',
-        component: NotFound,
+        component: NotFoundPage,
         meta: {
-            breadcrumb: 'not-found'
+
         }
     }
 ];
@@ -60,3 +60,5 @@ export const router = new VueRouter({
     routes: routes,
     mode: 'history'
 });
+
+

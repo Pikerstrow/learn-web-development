@@ -22,7 +22,7 @@ class CreateTutorialSectionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('tutorial_id')->references('id')->on('tutorials')->onDelete('set null');
+            $table->foreign('tutorial_id')->references('id')->on('tutorials_page')->onDelete('set null');
         });
     }
 

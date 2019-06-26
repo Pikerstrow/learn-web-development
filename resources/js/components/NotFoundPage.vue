@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import LandingFooter from "./LandingFooter";
-    import BreadCrumbs from "./page_sections_components/BreadCrumbs";
+    import LandingFooter from "./page_sections/shared/AppFooter";
+    import BreadCrumbs from "./page_sections/shared/AppBreadCrumbs";
     export default {
         name: "NotFound",
         components: {

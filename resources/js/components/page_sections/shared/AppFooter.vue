@@ -4,7 +4,7 @@
          <div class="row">
             <div class="col-12 col-lg-4 d-flex flex-column justify-content-start align-items-start">
                <div class="logo-container">
-                  <img class="logo-image logo-footer" src="../../../images/logo-white.png">
+                  <img class="logo-image logo-footer" src="../../../../images/logo-white.png">
                </div>
                <div class="site-description">
                   <p>

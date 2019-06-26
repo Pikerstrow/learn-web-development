@@ -9,6 +9,11 @@ class Tutorial extends Model
 {
     use SoftDeletes;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function rating()
     {
         return $this->hasOne(Rating::class);

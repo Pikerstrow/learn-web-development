@@ -13,14 +13,14 @@ window.Vue = require('vue');
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/Landing.vue -> <example-component></example-component>
+ * Eg. ./components/MainPage.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('landing-component', require('./components/Landing.vue').default);
-Vue.component('navbar', require('./components/page_sections/Navbar').default);
+Vue.component('landing-component', require('./components/MainPage.vue').default);
+Vue.component('navbar', require('./components/page_sections/shared/AppNavbar').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,7 +29,8 @@ Vue.component('navbar', require('./components/page_sections/Navbar').default);
  */
 
 import {router} from './router.js';
-import {store} from './store.js';
+import {store} from './store/store.js';
+
 
 
 const app = new Vue({

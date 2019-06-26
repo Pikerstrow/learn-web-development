@@ -2,8 +2,8 @@
    <div class="tutorial-page-container d-flex flex-column justify-content-between">
       <main class="tutorial-info-section d-flex flex-column align-items-center">
          <div class="app-container">
-            <bread-crumbs :root="'main'"></bread-crumbs>
-            <h1 class="text-center">{{ tutorialTitle }}</h1>
+            <bread-crumbs></bread-crumbs>
+            <h1 class="text-center">{{ tutorial ?  tutorial.attributes.title : null}}</h1>
          </div>
       </main>
       <footer class="d-flex flex-column justify-content-between">
@@ -13,19 +13,21 @@
 </template>
 
 <script>
-    import BreadCrumbs from "./page_sections/page_sections_components/BreadCrumbs";
+    import BreadCrumbs from "./page_sections/shared/AppBreadCrumbs";
+    import LandingFooter from "./page_sections/shared/AppFooter";
+
     export default {
-        name: "Tutorial",
-        data(){
-            return {
-                tutorialTitle: null
+        computed: {
+            tutorial(){
+                return this.$store.getters.tutorial
             }
         },
         components: {
-            'bread-crumbs': BreadCrumbs
+            'bread-crumbs': BreadCrumbs,
+            'landing-footer': LandingFooter
         },
         mounted(){
-            this.tutorialTitle = this.$route.params.tutorial
+            this.$store.dispatch('tutorialShow', this.$route.params.tutorial)
         }
     }
 </script>

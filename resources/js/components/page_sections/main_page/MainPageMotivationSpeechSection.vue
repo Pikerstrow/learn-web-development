@@ -37,7 +37,7 @@
                            </div>
                         </div>
                         <div class="author-avatar">
-                           <img width="80" src="../../../images/author-avatar.jpg">
+                           <img width="80" src="../../../../images/author-avatar.jpg">
                         </div>
                      </div>
                   </div>

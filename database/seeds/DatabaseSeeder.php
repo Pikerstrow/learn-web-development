@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         factory(Tutorial::class, 4)->create();
         factory(Rating::class, 4)->create();
 
-        /*Connecting tutorials to ratings*/
+        /*Connecting tutorials_page to ratings*/
         $tutorials = Tutorial::all();
 
         $tutorials->each(function($tutorial){

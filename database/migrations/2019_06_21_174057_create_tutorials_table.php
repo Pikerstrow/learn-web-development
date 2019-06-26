@@ -13,11 +13,11 @@ class CreateTutorialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutorials', function (Blueprint $table) {
+        Schema::create('tutorials_page', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->string('header_background_color')->nullable();
             $table->string('header_icon_class')->nullable();
@@ -34,6 +34,6 @@ class CreateTutorialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutorials');
+        Schema::dropIfExists('tutorials_page');
     }
 }

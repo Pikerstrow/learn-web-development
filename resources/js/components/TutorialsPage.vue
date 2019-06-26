@@ -2,7 +2,7 @@
    <div class="tutorials-page-container d-flex flex-column justify-content-between">
       <main class="tutorials-info-section d-flex flex-column align-items-center">
          <div class="app-container">
-            <bread-crumbs :root="'main'"></bread-crumbs>
+            <app-bread-crumbs></app-bread-crumbs>
             <div class="row d-flex justify-content-between tutorials-list-container row-no-margin">
                <router-link v-for="(tutorialInfo, index) in availableTutorials" :key="index"
                             :to="{name: 'tutorial', params: {tutorial: tutorialInfo.attributes.slug.toLowerCase()}}">
@@ -18,22 +18,21 @@
          </div>
       </main>
       <footer class="d-flex flex-column justify-content-between">
-         <landing-footer></landing-footer>
+         <app-footer></app-footer>
       </footer>
    </div>
 </template>
 
 <script>
-    import LandingFooter from "./page_sections/LandingFooter";
-    import TutorialCard from "./page_sections/page_sections_components/TutorialCard";
-    import BreadCrumbs from "./page_sections/page_sections_components/BreadCrumbs";
+    import AppFooter from "./page_sections/shared/AppFooter";
+    import TutorialCard from "./page_sections/tutorials_page/TutorialCard";
+    import AppBreadCrumbs from "./page_sections/shared/AppBreadCrumbs";
 
     export default {
-        name: "Tutorials",
         components: {
-            'landing-footer': LandingFooter,
+            'app-footer': AppFooter,
             'tutorial-card': TutorialCard,
-            'bread-crumbs': BreadCrumbs
+            'app-bread-crumbs': AppBreadCrumbs
         },
         computed: {
             availableTutorials() {

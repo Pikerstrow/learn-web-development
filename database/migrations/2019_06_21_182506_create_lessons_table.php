@@ -17,7 +17,7 @@ class CreateLessonsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('tutorial_section_id')->unsigned()->index()->nullable();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->mediumText('body');
             $table->timestamps();
             $table->softDeletes();

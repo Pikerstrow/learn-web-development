@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Tutorial;
 
-use App\Http\Resources\Tutorial\TutorialResource;
+use App\Http\Resources\Tutorial\TutorialInfoResource;
 use App\Models\Tutorial\Tutorial;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
@@ -13,8 +13,14 @@ class TutorialController extends Controller
 {
     use ApiResponses;
 
-    protected $resourceClassName           = TutorialResource::class;
-    protected $resourceCollectionClassName = TutorialResource::class;
+    protected $resourceClassName           = TutorialInfoResource::class;
+    protected $resourceCollectionClassName = TutorialInfoResource::class;
+
+
+    public function __construct()
+    {
+        TutorialInfoResource::withoutWrapping();
+    }
 
 
     public function store()
@@ -40,10 +46,14 @@ class TutorialController extends Controller
         }
     }
 
-    public function show()
+    public function show(Tutorial $tutorial)
     {
-
+        if(!$tutorial)
+            return $this->notFoundResponse();
+        else
+            return new TutorialInfoResource($tutorial);
     }
+
 
     public function destroy()
     {

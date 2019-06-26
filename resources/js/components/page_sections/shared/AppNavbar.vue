@@ -6,7 +6,7 @@
                <div class="logo-text d-flex">
                   <div class="align-self-center logo-div">
                      <router-link :to="{name: 'main'}">
-                        <img class="logo-image" src="../../../images/logo.png">
+                        <img class="logo-image" src="../../../../images/logo.png">
                      </router-link>
                   </div>
                </div>
@@ -58,7 +58,7 @@
                </ul>
             </div>
             <div class="hidden-menu__footer d-flex justify-content-center align-items-center">
-               <img class="hidden-menu__logo" src="../../../images/logo-white.png">
+               <img class="hidden-menu__logo" src="../../../../images/logo-white.png">
             </div>
          </div>
       </div>
