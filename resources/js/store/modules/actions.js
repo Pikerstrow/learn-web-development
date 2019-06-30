@@ -1,20 +1,22 @@
+import * as helpers from "../../helpers/functions";
+
 export const actions = {
-    tutorialIndex({ commit }){
-        axios.get('/api/tutorial').then(
-            response => {
-                commit('TUTORIAL_INDEX', response.data.data);
-            }
-        ).catch(error => {
-            console.log(error)
-        });
+    tutorialIndex({ commit }, page = 1) {
+        axios.get(`/api/tutorial?page=${page}`)
+            .then( response => {
+                commit('TUTORIAL_INDEX', response.data);
+            })
+            .catch( error => {
+                helpers.checkErrorAndRedirect(error)
+            });
     },
-    tutorialShow({commit}, tutorial){
-        axios.get(`/api/tutorial/${tutorial}`).then(
-            response => {
+    tutorialShow({ commit }, tutorial) {
+        axios.get(`/api/tutorial/${tutorial}`)
+            .then( response => {
                 commit('TUTORIAL_SHOW', response.data);
-            }
-        ).catch(error => {
-            console.log(error)
-        });
+            })
+            .catch( error => {
+                helpers.checkErrorAndRedirect(error)
+            });
     }
 }

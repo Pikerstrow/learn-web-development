@@ -15,6 +15,10 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/{any}', function(){
+Route::get('/{any?}', function(){
     return view('welcome');
 })->where('any', '.*');
+
+// Route::get('/{vue_capture?}', function () {
+//     return view('welcome');
+// })->where('vue_capture', '[\/\w\.-]*');

@@ -3,62 +3,97 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 /*Imported components*/
-import MainPage from './components/MainPage';
-import TutorialsPage from './components/TutorialsPage';
-import TutorialPage from './components/TutorialPage';
-import NotFoundPage from "./components/NotFoundPage";
+import App from './components/App';
+import MainPage from './components/pages/MainPage';
+import TutorialsPage from './components/pages/TutorialsPage';
+import TutorialPage from './components/pages/TutorialPage';
+import NotFoundPage from "./components/pages/NotFoundPage";
+import InternalErrorPage from "./components/pages/InternalErrorPage";
+import AppLocalStorage from './helpers/AppLocalStorage';
+
+import * as helpers from './helpers/functions';
 
 
 const routes = [
     {
-        path: '/',
-        name: 'main',
-        component: MainPage,
-        meta: {
-
-        }
+        path: "",
+        redirect: "/" + (AppLocalStorage.get('locale') || 'en')
     },
     {
-        path: '/tutorials_page',
-        name: 'tutorials',
-        component: TutorialsPage,
-        meta: {
-
-            styles: {
-                backgroundColor: 'white',
-                borderBottom: 'none',
-                position: 'fixed',
-                boxShadow: '0px 0px 11px 0px rgba(0,0,0,0.75)'
-            }
-        }
-    },
-    {
-        path: '/tutorials_page/:tutorial',
-        name: 'tutorial',
-        component: TutorialPage,
-        meta: {
-            styles: {
-                backgroundColor: 'white',
-                borderBottom: 'none',
-                position: 'fixed',
-                boxShadow: '0px 0px 11px 0px rgba(0,0,0,0.75)'
+        path: '/:locale',
+        component: App,
+        children: [
+            {
+                path: '',
+                name: 'main',
+                component: MainPage,
+                meta: {
+                    title: 'Learn Web Development - free tutorials and lessons!'
+                }
             },
-
-        }
+            {
+                path: 'tutorials',
+                name: 'tutorials',
+                component: TutorialsPage,
+                meta: {
+                    title: 'Learn Web Development - free tutorials and lessons! Tutorials list.',
+                    styles: {
+                        backgroundColor: 'white',
+                        borderBottom: 'none',
+                        position: 'fixed',
+                        boxShadow: '0px 0px 11px 0px rgba(0,0,0,0.75)'
+                    }
+                }
+            },
+            {
+                path: 'tutorials/:tutorial',
+                name: 'tutorial',
+                component: TutorialPage,
+                meta: {
+                    title: {param: 'tutorial'},
+                    styles: {
+                        backgroundColor: 'white',
+                        borderBottom: 'none',
+                        position: 'fixed',
+                        boxShadow: '0px 0px 11px 0px rgba(0,0,0,0.75)'
+                    }
+                }
+            },
+            {
+                path: "not-found",
+                name: "not-found",
+                component: NotFoundPage,
+                meta: {
+                    title: 'Page Not Found'
+                }
+            },
+            {
+                path: "error",
+                name: "internal-error",
+                component: InternalErrorPage
+            },
+            {
+                path: '*',
+                component: NotFoundPage
+            }
+        ]
     },
     {
-        path: '/*',
-        name: 'not-found',
-        component: NotFoundPage,
-        meta: {
-
-        }
+        path: '*',
+        component: NotFoundPage
     }
 ];
 
-export const router = new VueRouter({
+const router = new VueRouter({
     routes: routes,
     mode: 'history'
 });
+
+router.beforeEach(function (to, from, next) {
+    helpers.checkLocale(to, from, next)
+});
+
+export default router;
+
 
 

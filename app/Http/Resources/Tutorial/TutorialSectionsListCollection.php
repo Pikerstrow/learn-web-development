@@ -23,7 +23,7 @@ class TutorialSectionsListCollection extends JsonResource
                 'description' => $this->description
             ],
             'links' => [
-                'self' => route('section.show', [$this->tutorial->id, $this->id])
+                'self' => route('section.show', [$this->tutorial->slug, $this->id])
             ]
         ];
     }

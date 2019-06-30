@@ -19,7 +19,6 @@
 </head>
     <body class="d-flex">
         <div id="app" class="d-flex flex-column justify-content-between align-items-center">
-            <navbar :styles="styles"></navbar>
             <router-view></router-view>
         </div>
 

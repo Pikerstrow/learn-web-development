@@ -1,7 +1,7 @@
 <template>
    <section class="footer-section d-flex flex-column align-items-center">
       <div class="app-container">
-         <div class="row">
+         <div class="row pb-3">
             <div class="col-12 col-lg-4 d-flex flex-column justify-content-start align-items-start">
                <div class="logo-container">
                   <img class="logo-image logo-footer" src="../../../../images/logo-white.png">
@@ -18,7 +18,7 @@
                      All our tutorials are under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 International License.</a>
                   </p>
                </div>
-               <div class="d-flex justify-content-start social-share-container">
+               <!-- <div class="d-flex justify-content-start social-share-container">
                   <div class="facebook-buttons">
                      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width=""
                           data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="true">
@@ -27,7 +27,7 @@
                   <div class="tweeter-button" style="margin-left: 3px;">
                      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-lang="en" data-show-count="false">Tweet</a>
                   </div>
-               </div>
+               </div> -->
             </div>
             <div class="col-12 col-lg-4 d-flex flex-column justify-content-start align-items-center footer-column">
                <h4>Follow us on</h4>

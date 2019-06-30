@@ -15,7 +15,7 @@ $factory->define(Tutorial::class, function (Faker $faker) {
         "linear-gradient(to right top, #f0c837, #f4cc2f, #f8d026, #fbd419, #ffd800)",
         "linear-gradient(to bottom, #777bb7, #7276b5, #6d71b2, #676cb0, #6267ad)"
     ];
-    $iconsClasses      = ['fa-10x fab fa-html5', 'fa-10x fab fa-css3-alt', 'fa-7x fab fa-js', 'fa-7x fab fa-php'];
+    $iconsClasses      = ['fa-7x fab fa-html5', 'fa-7x fab fa-css3-alt', 'fa-7x fab fa-js', 'fa-7x fab fa-php'];
     $iconsColors       = ['#e02e00', '#006eba', '#f1d63b', '#777bb3'];
     $descriptions      = [
         0 => "HTML is the very first technology, that everyone who wants to learn web development should " .

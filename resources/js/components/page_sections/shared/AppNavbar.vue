@@ -5,7 +5,7 @@
             <div class="d-flex menu-div-container">
                <div class="logo-text d-flex">
                   <div class="align-self-center logo-div">
-                     <router-link :to="{name: 'main'}">
+                     <router-link :to="{name: 'main', params: {locale: locale}}">
                         <img class="logo-image" src="../../../../images/logo.png">
                      </router-link>
                   </div>
@@ -36,12 +36,12 @@
             <div class="hidden-menu-items-container">
                <ul :class="{'active': isOpened}" class="hidden-menu-ul">
                   <li @click="toggleMenu" class="hidden-menu-li">
-                     <router-link tag="a" :to="{name: 'main'}">
+                     <router-link tag="a" :to="{name: 'main', params: {locale: locale}}">
                         Main
                      </router-link>
                   </li>
                   <li @click="toggleMenu" class="hidden-menu-li">
-                     <router-link tag="a" :to="{name: 'tutorials'}">
+                     <router-link tag="a" :to="{name: 'tutorials', query: {page: 1}}">
                         Tutorials
                      </router-link>
                   </li>
@@ -74,6 +74,11 @@
         data() {
             return {
                 isOpened: false
+            }
+        },
+        computed: {
+            locale(){
+                return AppLocalStorage.get('locale')
             }
         },
         methods: {

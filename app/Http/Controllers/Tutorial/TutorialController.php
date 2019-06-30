@@ -35,7 +35,7 @@ class TutorialController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->has("limit") ? $request->get("limit") : 6;
+        $limit = $request->has("limit") ? $request->get("limit") : 2;
 
         try {
             $tutorials = Tutorial::orderBy("id", "DESC")->paginate($limit);

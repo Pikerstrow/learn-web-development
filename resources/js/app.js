@@ -16,11 +16,16 @@ window.Vue = require('vue');
  * Eg. ./components/MainPage.vue -> <example-component></example-component>
  */
 
+ /**
+  * HELPERS
+ */
+import AppLocalStorage from './helpers/AppLocalStorage';
+window.AppLocalStorage = AppLocalStorage;
+
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('landing-component', require('./components/MainPage.vue').default);
-Vue.component('navbar', require('./components/page_sections/shared/AppNavbar').default);
+Vue.component('app', require('./components/App').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,26 +33,11 @@ Vue.component('navbar', require('./components/page_sections/shared/AppNavbar').d
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import {router} from './router.js';
+import router from './router.js';
 import {store} from './store/store.js';
-
-
 
 const app = new Vue({
     el: '#app',
-    data: {
-        defaultNavbarStyles: {
-            backgroundColor: 'transparent',
-            borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-            position: 'absolute',
-            boxShadow: 'none'
-        }
-    },
-    computed: {
-        styles(){
-            return this.$route.meta.styles ? this.$route.meta.styles : this.defaultNavbarStyles;
-        }
-    },
-    router: router,
-    store: store
+    router,
+    store
 });

@@ -6,31 +6,21 @@
          <main-page-feedbacks></main-page-feedbacks>
          <main-page-motivation></main-page-motivation>
       </main>
-      <footer class="d-flex flex-column justify-content-between">
-         <app-footer></app-footer>
-      </footer>
    </div>
 </template>
 
 <script>
-    import MainPageHeaderSection from './page_sections/main_page/MainPageHeaderSection';
-    import MainPageTutorialsSection from './page_sections/main_page/MainPageTutorialsSection';
-    import MainPageStudentsFeedbacksSection from './page_sections/main_page/MainPageStudentsFeedbacksSection';
-    import AppFooter from "./page_sections/shared/AppFooter";
-    import MainPageMotivationSpeechSection from "./page_sections/main_page/MainPageMotivationSpeechSection";
+    import MainPageHeaderSection from '../page_sections/main_page/MainPageHeaderSection';
+    import MainPageTutorialsSection from '../page_sections/main_page/MainPageTutorialsSection';
+    import MainPageStudentsFeedbacksSection from '../page_sections/main_page/MainPageStudentsFeedbacksSection';
+    import MainPageMotivationSpeechSection from "../page_sections/main_page/MainPageMotivationSpeechSection";
 
     export default {
-        data() {
-            return {
-                query: null,
-            }
-        },
         components: {
             'main-page-header': MainPageHeaderSection,
             'main-page-tutorials': MainPageTutorialsSection,
             'main-page-feedbacks': MainPageStudentsFeedbacksSection,
             'main-page-motivation': MainPageMotivationSpeechSection,
-            'app-footer': AppFooter,
         }
     }
 </script>

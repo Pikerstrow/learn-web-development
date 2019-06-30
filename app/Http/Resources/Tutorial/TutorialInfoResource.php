@@ -38,7 +38,7 @@ class TutorialInfoResource extends JsonResource
                 ]
             ],
             'links' => [
-                'self' => route('tutorial.show', $this->id)
+                'self' => route('tutorial.show', $this->slug)
             ]
         ];
     }

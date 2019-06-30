@@ -54,9 +54,7 @@ trait ApiResponses
 
     public function indexResponse($models)
     {
-        return response()->json([
-            "data" => $this->resourceCollectionClassName::collection($models)
-        ], Response::HTTP_OK);
+        return $this->resourceCollectionClassName::collection($models);
     }
 
     public function showResponse($model)
