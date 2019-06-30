@@ -12,8 +12,9 @@
         </router-link>
       </li>
 
-      <li v-for="n in totalPagesNumber" :key="n" class="page-item">
-        <router-link class="page-link" :to="{name: 'tutorials', query: {page: n}}">{{ n }}</router-link>
+      <li v-for="(link, index) in paginationLinks" :key="index" class="page-item">
+        <router-link v-if="link.value !== '...'" :to="{name: 'tutorials', query: {page: link.value}}" class="page-link" >{{ link.value }}</router-link>
+        <span v-else class="page-link">{{ link.value }}</span>
       </li>
 
       <li :class="{'disabled': data.current_page === data.last_page}" class="page-item">
@@ -35,13 +36,50 @@ export default {
   props: ["data"],
   data() {
     return {
-      dotsPlaced: false
+      dotsPushed: false,
+      onEachSide: 1
     };
   },
   computed: {
     totalPagesNumber() {
       return Math.ceil(this.data.total / this.data.per_page);
+    },
+    paginationLinks() {
+      let links = [];
+
+      if (this.totalPagesNumber > 9) {
+
+        for (let i = 1; i <= this.totalPagesNumber; i++) {
+          if (i <= 2 || i > this.totalPagesNumber - 2) {
+            links.push({ value: i });
+            this.dotsPushed = false;
+          } else if (i > 2 && i < this.data.current_page - this.onEachSide) {
+
+            if (!this.dotsPushed) {
+              links.push({ value: "..." });
+              this.dotsPushed = true;
+            }
+
+          } else if (i >= this.data.current_page - this.onEachSide && i <= this.data.current_page + this.onEachSide) {
+            links.push({ value: i });
+            this.dotsPushed = false;
+          } else {
+            if (!this.dotsPushed) {
+              links.push({ value: "..." });
+              this.dotsPushed = true;
+            }
+          }
+        }
+      } else {
+          for (let i = 1; i <= this.totalPagesNumber; i++) {
+              links.push({ value: i });
+          }
+      }
+      return links;
     }
+  },
+  mounted(){
+      console.log(this.data)
   }
 };
 </script>

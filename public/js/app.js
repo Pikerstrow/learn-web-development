@@ -2413,17 +2413,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["data"],
   data: function data() {
     return {
-      dotsPlaced: false
+      dotsPushed: false,
+      onEachSide: 1
     };
   },
   computed: {
     totalPagesNumber: function totalPagesNumber() {
       return Math.ceil(this.data.total / this.data.per_page);
+    },
+    paginationLinks: function paginationLinks() {
+      var links = [];
+
+      if (this.totalPagesNumber > 9) {
+        for (var i = 1; i <= this.totalPagesNumber; i++) {
+          if (i <= 2 || i > this.totalPagesNumber - 2) {
+            links.push({
+              value: i
+            });
+            this.dotsPushed = false;
+          } else if (i > 2 && i < this.data.current_page - this.onEachSide) {
+            if (!this.dotsPushed) {
+              links.push({
+                value: "..."
+              });
+              this.dotsPushed = true;
+            }
+          } else if (i >= this.data.current_page - this.onEachSide && i <= this.data.current_page + this.onEachSide) {
+            links.push({
+              value: i
+            });
+            this.dotsPushed = false;
+          } else {
+            if (!this.dotsPushed) {
+              links.push({
+                value: "..."
+              });
+              this.dotsPushed = true;
+            }
+          }
+        }
+      } else {
+        for (var _i = 1; _i <= this.totalPagesNumber; _i++) {
+          links.push({
+            value: _i
+          });
+        }
+      }
+
+      return links;
     }
+  },
+  mounted: function mounted() {
+    console.log(this.data);
   }
 });
 
@@ -42370,19 +42416,28 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._l(_vm.totalPagesNumber, function(n) {
+              _vm._l(_vm.paginationLinks, function(link, index) {
                 return _c(
                   "li",
-                  { key: n, staticClass: "page-item" },
+                  { key: index, staticClass: "page-item" },
                   [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "page-link",
-                        attrs: { to: { name: "tutorials", query: { page: n } } }
-                      },
-                      [_vm._v(_vm._s(n))]
-                    )
+                    link.value !== "..."
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "page-link",
+                            attrs: {
+                              to: {
+                                name: "tutorials",
+                                query: { page: link.value }
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(link.value))]
+                        )
+                      : _c("span", { staticClass: "page-link" }, [
+                          _vm._v(_vm._s(link.value))
+                        ])
                   ],
                   1
                 )
@@ -43025,8 +43080,8 @@ var render = function() {
               ),
               _vm._v(" "),
               _vm.paginationInfo
-                ? _c("pagination-test", {
-                    attrs: { data: _vm.paginationInfoTest }
+                ? _c("pagination-links", {
+                    attrs: { data: _vm.paginationInfo }
                   })
                 : _vm._e()
             ],
