@@ -2475,10 +2475,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2496,74 +2496,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    data: {
+    section: {
       type: Object,
-      "default": function _default() {
-        return {
-          currentPage: 1,
-          onEachSide: 1,
-          totalPages: 10
-        };
-      }
-    }
-  },
-  data: function data() {
-    return {
-      dotsPushed: false,
-      pageNumber: 1
-    };
-  },
-  computed: {
-    paginationLinks: function paginationLinks() {
-      var links = [];
-
-      for (var i = 1; i <= this.data.totalPages; i++) {
-        if (i <= 2 || i > this.data.totalPages - 2) {
-          links.push({
-            value: i
-          });
-        } else if (i > 2 && i < this.pageNumber - this.data.onEachSide) {
-          if (this.dotsPushed) {
-            links.push({
-              value: "..."
-            });
-            this.dotsPushed = false;
-          }
-        } else if (i >= this.pageNumber - this.data.onEachSide && i <= this.pageNumber + this.data.onEachSide) {
-          links.push({
-            value: i
-          });
-          this.dotsPushed = false;
-        } else {
-          if (!this.dotsPushed) {
-            links.push({
-              value: "..."
-            });
-            this.dotsPushed = true;
-          }
-        }
-      }
-
-      return links;
+      required: true
     }
   },
   mounted: function mounted() {
-    this.pageNumber = this.data.currentPage;
+    console.log(this.section);
   }
 });
 
@@ -2754,6 +2695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_sections_main_page_MainPageTutorialsSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../page_sections/main_page/MainPageTutorialsSection */ "./resources/js/components/page_sections/main_page/MainPageTutorialsSection.vue");
 /* harmony import */ var _page_sections_main_page_MainPageStudentsFeedbacksSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../page_sections/main_page/MainPageStudentsFeedbacksSection */ "./resources/js/components/page_sections/main_page/MainPageStudentsFeedbacksSection.vue");
 /* harmony import */ var _page_sections_main_page_MainPageMotivationSpeechSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../page_sections/main_page/MainPageMotivationSpeechSection */ "./resources/js/components/page_sections/main_page/MainPageMotivationSpeechSection.vue");
+/* harmony import */ var _helpers_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/functions */ "./resources/js/helpers/functions.js");
 //
 //
 //
@@ -2765,6 +2707,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2775,6 +2718,9 @@ __webpack_require__.r(__webpack_exports__);
     'main-page-tutorials': _page_sections_main_page_MainPageTutorialsSection__WEBPACK_IMPORTED_MODULE_1__["default"],
     'main-page-feedbacks': _page_sections_main_page_MainPageStudentsFeedbacksSection__WEBPACK_IMPORTED_MODULE_2__["default"],
     'main-page-motivation': _page_sections_main_page_MainPageMotivationSpeechSection__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  mounted: function mounted() {
+    _helpers_functions__WEBPACK_IMPORTED_MODULE_4__["moveToTop"]();
   }
 });
 
@@ -2817,6 +2763,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _page_sections_tutorial_page_TutorialSectionLessonsList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../page_sections/tutorial_page/TutorialSectionLessonsList */ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue");
 //
 //
 //
@@ -2841,11 +2788,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     tutorial: function tutorial() {
       return this.$store.getters.tutorial;
     }
+  },
+  components: {
+    'sections-list': _page_sections_tutorial_page_TutorialSectionLessonsList__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
     this.$store.dispatch("tutorialShow", this.$route.params.tutorial);
@@ -2866,7 +2818,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_sections_tutorials_page_TutorialCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../page_sections/tutorials_page/TutorialCard */ "./resources/js/components/page_sections/tutorials_page/TutorialCard.vue");
 /* harmony import */ var _page_sections_shared_AppPagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../page_sections/shared/AppPagination */ "./resources/js/components/page_sections/shared/AppPagination.vue");
 /* harmony import */ var _helpers_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/functions */ "./resources/js/helpers/functions.js");
-/* harmony import */ var _page_sections_shared_AppPaginationTest__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../page_sections/shared/AppPaginationTest */ "./resources/js/components/page_sections/shared/AppPaginationTest.vue");
 //
 //
 //
@@ -2905,15 +2856,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     "tutorial-card": _page_sections_tutorials_page_TutorialCard__WEBPACK_IMPORTED_MODULE_0__["default"],
-    "pagination-links": _page_sections_shared_AppPagination__WEBPACK_IMPORTED_MODULE_1__["default"],
-    "pagination-test": _page_sections_shared_AppPaginationTest__WEBPACK_IMPORTED_MODULE_3__["default"]
+    "pagination-links": _page_sections_shared_AppPagination__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     tutorialsFromDatabase: function tutorialsFromDatabase() {
@@ -7582,10 +7531,10 @@ exports.push([module.i, ".pagination_links[data-v-0cb8866d] {\n  margin: 50px 0p
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7594,7 +7543,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".pagination_links[data-v-3ca8a39f] {\n  margin: 50px 0px 0px 0px;\n}\n.pagination_links .disabled[data-v-3ca8a39f] {\n  cursor: not-allowed;\n}", ""]);
+exports.push([module.i, ".lessons-ul[data-v-310acfa6] {\n  -webkit-column-count: 3;\n  -moz-column-count: 3;\n  column-count: 3;\n}", ""]);
 
 // exports
 
@@ -7689,7 +7638,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".tutorial-page-container[data-v-1e7c2923] {\n  padding-top: 100px;\n  padding-bottom: 50px;\n  background-color: whitesmoke;\n  width: 100%;\n  height: 100vh;\n}", ""]);
+exports.push([module.i, ".tutorial-page-container[data-v-1e7c2923] {\n  padding-top: 100px;\n  padding-bottom: 50px;\n  width: 100%;\n}\n.tutorial-page-container .tutorials-lessons[data-v-1e7c2923] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -39705,15 +39654,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -42489,10 +42438,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42504,85 +42453,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    {
-      staticClass: "pagination_links",
-      attrs: { "aria-label": "page pagination" }
-    },
-    [
-      _vm.data
-        ? _c(
-            "ul",
-            { ref: "paginationUl", staticClass: "pagination" },
-            [
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: _vm.data.currentPage === 1 }
-                },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "page-link",
-                      attrs: { "aria-hidden": "true" }
-                    },
-                    [_vm._v("«")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-                ]
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.paginationLinks, function(link, index) {
-                return _c(
-                  "li",
-                  {
-                    key: index,
-                    staticClass: "page-item",
-                    on: {
-                      click: function($event) {
-                        _vm.pageNumber = _vm.n
-                      }
-                    }
-                  },
-                  [
-                    _c("span", { staticClass: "page-link" }, [
-                      _vm._v(_vm._s(link.value))
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: {
-                    disabled: _vm.data.current_page === _vm.data.totalPages
-                  }
-                },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "page-link",
-                      attrs: { "aria-hidden": "true" }
-                    },
-                    [_vm._v("»")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-                ]
-              )
-            ],
-            2
+  return _vm.section
+    ? _c("div", [
+        _c("h2", [_vm._v(_vm._s(_vm.section.attributes.title))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "section-description" }, [
+          _vm._v(
+            "\n      " + _vm._s(_vm.section.attributes.description) + "\n  "
           )
-        : _vm._e()
-    ]
-  )
+        ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "lessons-ul" },
+          _vm._l(_vm.section.attributes.lessons, function(lesson) {
+            return _c("li", { key: lesson.attributes.id }, [
+              _vm._v(_vm._s(lesson.attributes.title))
+            ])
+          }),
+          0
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42922,64 +42814,79 @@ var render = function() {
         "tutorial-page-container d-flex flex-column justify-content-between"
     },
     [
-      _c(
-        "main",
-        {
-          staticClass:
-            "tutorial-info-section d-flex flex-column align-items-center"
-        },
-        [
-          _c("div", { staticClass: "app-container" }, [
-            _c("div", { staticClass: "breadcrumbs" }, [
-              _c("ul", [
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: { name: "main" } } }, [
-                      _vm._v("Main")
-                    ]),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: { to: { name: "tutorials", query: { page: 1 } } }
-                      },
-                      [_vm._v("Tutorials")]
-                    ),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "\n                  " +
-                      _vm._s(
-                        _vm.tutorial ? _vm.tutorial.attributes.title : null
-                      ) +
-                      "\n              "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v(
-                _vm._s(_vm.tutorial ? _vm.tutorial.attributes.title : null)
+      _vm.tutorial
+        ? _c(
+            "main",
+            {
+              staticClass:
+                "tutorial-info-section d-flex flex-column align-items-center"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "app-container" },
+                [
+                  _c("div", { staticClass: "breadcrumbs" }, [
+                    _c("ul", [
+                      _c(
+                        "li",
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "main" } } },
+                            [_vm._v("Main")]
+                          ),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: { name: "tutorials", query: { page: 1 } }
+                              }
+                            },
+                            [_vm._v("Tutorials")]
+                          ),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("li", [_vm._v(_vm._s(_vm.tutorial.attributes.title))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(_vm.tutorial.attributes.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "tutorialdescription" }, [
+                    _vm._v(_vm._s(_vm.tutorial.attributes.description))
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.tutorial.attributes.sections, function(
+                    section,
+                    index
+                  ) {
+                    return _c("sections-list", {
+                      key: index,
+                      attrs: { section: section }
+                    })
+                  })
+                ],
+                2
               )
-            ])
-          ])
-        ]
-      )
+            ]
+          )
+        : _vm._e()
     ]
   )
 }
@@ -59888,18 +59795,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/page_sections/shared/AppPaginationTest.vue":
-/*!****************************************************************************!*\
-  !*** ./resources/js/components/page_sections/shared/AppPaginationTest.vue ***!
-  \****************************************************************************/
+/***/ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true& */ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true&");
-/* harmony import */ var _AppPaginationTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppPaginationTest.vue?vue&type=script&lang=js& */ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& */ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&");
+/* harmony import */ var _TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true& */ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true&");
+/* harmony import */ var _TutorialSectionLessonsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TutorialSectionLessonsList.vue?vue&type=script&lang=js& */ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& */ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -59910,66 +59817,66 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _AppPaginationTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _TutorialSectionLessonsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "3ca8a39f",
+  "310acfa6",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/page_sections/shared/AppPaginationTest.vue"
+component.options.__file = "resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AppPaginationTest.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TutorialSectionLessonsList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&":
-/*!**************************************************************************************************************************************!*\
-  !*** ./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& ***!
-  \**************************************************************************************************************************************/
+/***/ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************!*\
+  !*** ./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=style&index=0&id=3ca8a39f&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_style_index_0_id_3ca8a39f_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=style&index=0&id=310acfa6&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_style_index_0_id_310acfa6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true&":
-/*!***********************************************************************************************************************!*\
-  !*** ./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true& ***!
-  \***********************************************************************************************************************/
+/***/ "./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true&":
+/*!***************************************************************************************************************************************!*\
+  !*** ./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true& ***!
+  \***************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/shared/AppPaginationTest.vue?vue&type=template&id=3ca8a39f&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page_sections/tutorial_page/TutorialSectionLessonsList.vue?vue&type=template&id=310acfa6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppPaginationTest_vue_vue_type_template_id_3ca8a39f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TutorialSectionLessonsList_vue_vue_type_template_id_310acfa6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

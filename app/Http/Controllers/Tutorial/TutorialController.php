@@ -35,7 +35,7 @@ class TutorialController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->has("limit") ? $request->get("limit") : 2;
+        $limit = $request->has("limit") ? $request->get("limit") : 6;
 
         try {
             $tutorials = Tutorial::orderBy("id", "DESC")->paginate($limit);
@@ -46,12 +46,16 @@ class TutorialController extends Controller
         }
     }
 
-    public function show(Tutorial $tutorial)
+    public function show(string $slug)
     {
-        if(!$tutorial)
+        if(!$slug) {
             return $this->notFoundResponse();
-        else
+        } else {
+            $tutorial = Tutorial::with(['sections' => function($query){
+                $query->with('lessons');
+            }])->where('slug', '=', $slug)->firstOrFail();
             return new TutorialInfoResource($tutorial);
+        }
     }
 
 

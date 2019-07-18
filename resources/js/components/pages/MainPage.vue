@@ -14,6 +14,7 @@
     import MainPageTutorialsSection from '../page_sections/main_page/MainPageTutorialsSection';
     import MainPageStudentsFeedbacksSection from '../page_sections/main_page/MainPageStudentsFeedbacksSection';
     import MainPageMotivationSpeechSection from "../page_sections/main_page/MainPageMotivationSpeechSection";
+    import * as helpers from "../../helpers/functions";
 
     export default {
         components: {
@@ -21,6 +22,9 @@
             'main-page-tutorials': MainPageTutorialsSection,
             'main-page-feedbacks': MainPageStudentsFeedbacksSection,
             'main-page-motivation': MainPageMotivationSpeechSection,
+        },
+        mounted(){
+            helpers.moveToTop();
         }
     }
 </script>

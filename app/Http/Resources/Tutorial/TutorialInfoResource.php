@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Tutorial;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Tutorial\TutorialSectionsListCollection;
 
 class TutorialInfoResource extends JsonResource
 {
@@ -23,10 +24,11 @@ class TutorialInfoResource extends JsonResource
                 'description' => $this->description,
                 'info' => [
                     'sections' => $this->sections ? $this->sections()->count() : null,
-                    'lessons' => $this->lessons ? $this->lessons()->count(): null,
+                    'lessons' => $this->lessons ? $this->lessons()->count() : null,
                     'quiz' => mt_rand(4, 12), //TODO::select from DB
                     'type' => $this->type
                 ],
+                'sections' => TutorialSectionsListCollection::collection($this->sections),
                 'ratingInfo' => [
                     'rating' => $this->rating ? $this->rating->rating : 0,
                     'votes' => $this->rating ? $this->rating->votes : 0,

@@ -41,14 +41,12 @@ import TutorialCard from "../page_sections/tutorials_page/TutorialCard";
 import AppPagination from "../page_sections/shared/AppPagination";
 import * as helpers from "../../helpers/functions";
 
-import AppPaginationTest from "../page_sections/shared/AppPaginationTest";
 
 export default {
 
   components: {
     "tutorial-card": TutorialCard,
     "pagination-links": AppPagination,
-    "pagination-test": AppPaginationTest
   },
   computed: {
     tutorialsFromDatabase() {
