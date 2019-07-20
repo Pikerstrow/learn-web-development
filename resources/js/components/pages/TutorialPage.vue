@@ -1,7 +1,7 @@
 <template>
   <div class="tutorial-page-container d-flex flex-column justify-content-between">
     <main v-if="tutorial" class="tutorial-info-section d-flex flex-column align-items-center">
-      <div class="app-container">
+      <div class="app-container app-conteiner-two-parts">
         <div class="breadcrumbs">
           <ul>
             <li>
@@ -16,8 +16,15 @@
           </ul>
         </div>
         <h1 class="text-center">{{ tutorial.attributes.title }}</h1>
-        <div class="tutorialdescription">{{ tutorial.attributes.description }}</div>
-        <sections-list v-for="(section, index) in tutorial.attributes.sections" :key="index" :section="section"></sections-list>
+        <div class="tutorial-description">{{ tutorial.attributes.description }}</div>
+        <sections-list
+          v-for="(section, index) in tutorial.attributes.sections"
+          :key="index"
+          :section="section"
+          :tutorialSlug="tutorial.attributes.slug"
+          :sectionNumber="index + 1"
+          class="sections-list"
+        ></sections-list>
       </div>
     </main>
   </div>
@@ -33,7 +40,7 @@ export default {
     }
   },
   components: {
-      'sections-list': TutorialSectionLessonsList
+    "sections-list": TutorialSectionLessonsList
   },
   mounted() {
     this.$store.dispatch("tutorialShow", this.$route.params.tutorial);
@@ -49,6 +56,13 @@ export default {
 
   .tutorials-lessons {
     width: 100%;
+  }
+  .tutorial-description {
+    margin: 40px 0px;
+    text-align: justify;
+  }
+  .sections-list {
+    margin-bottom: 40px;
   }
 }
 </style>

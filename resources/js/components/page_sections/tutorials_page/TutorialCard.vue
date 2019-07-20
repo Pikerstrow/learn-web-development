@@ -170,6 +170,8 @@
          }
 
          .tutorial-stats {
+            margin-top: 20px;
+
             p {
                font-size: 18px;
                line-height: 25px;

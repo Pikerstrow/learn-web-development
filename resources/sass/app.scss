@@ -27,7 +27,7 @@ $base_fon_family: "Nunito", sans-serif;
 
 
 body {
-  background-color: whitesmoke !important;
+  background-color: #fcfcfc !important;
   margin: 0;
   padding: 0;
   font-family: $base_fon_family;
@@ -91,6 +91,15 @@ h2.section-heading {
 
 .logo-image {
   width: 200px;
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin: 10px 0px !important;
 }
 
 
