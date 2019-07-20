@@ -1,5 +1,5 @@
 export const state = {
     tutorials: null,
-    tutorial: null
+    tutorial: null,
 }
 

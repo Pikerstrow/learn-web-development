@@ -5,12 +5,13 @@
         <img class="logo-image" src="../../../../images/logo.png" />
       </router-link>
     </div> -->
+    <div style="padding-right: 50px">
+        <language-switcher></language-switcher>
+    </div>
     <div>
         Search
     </div>
-    <div>
-        <language-switcher></language-switcher>
-    </div>
+
   </div>
 </template>
 

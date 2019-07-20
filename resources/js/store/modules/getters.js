@@ -6,5 +6,8 @@ export const getters = {
     },
     tutorial(state){
         return state.tutorial;
+    },
+    allLocales(state){
+        return state.allLocales;
     }
 }

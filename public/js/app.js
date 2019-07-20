@@ -2285,6 +2285,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/AppLocalStorage */ "./resources/js/helpers/AppLocalStorage.js");
 //
 //
 //
@@ -2292,13 +2293,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      isOpened: false,
+      flags: ["gb.svg", "ru.svg"]
+    };
+  },
+  computed: {
+    currentLocale: function currentLocale() {
+      var locale = _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__["default"].has("locale") ? _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__["default"].get("locale") : null;
+      return locale && locale === "ru" ? "ru" : "en";
+    }
   },
   methods: {
-    switchLanguage: function switchLanguage() {
-      this.$refs.arrow.style.transform = "rotate(180deg)";
+    showLanguages: function showLanguages() {
+      this.isOpened = !this.isOpened;
     }
   }
 });
@@ -2518,6 +2536,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_AppLanguageSwitcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/AppLanguageSwitcher */ "./resources/js/components/page_sections/shared/AppLanguageSwitcher.vue");
+//
 //
 //
 //
@@ -7632,7 +7651,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".switcher-container[data-v-5127a56c] {\n  padding: 7px;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border: 0.5px solid black;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.switcher-container i[data-v-5127a56c] {\n  padding-left: 10px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".switcher-container[data-v-5127a56c] {\n  padding: 5px;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border: 0.5px solid black;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 5px;\n}\n.switcher-container i[data-v-5127a56c] {\n  cursor: pointer;\n}\n.switcher-container .arrow-container[data-v-5127a56c] {\n  margin: 0;\n  padding: 0;\n  display: flex;\n  transition: all 0.3s;\n  transition-timing-function: ease-in-out;\n}\n.switcher-container .arrow-container.opened[data-v-5127a56c] {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}", ""]);
 
 // exports
 
@@ -42338,15 +42357,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "switcher-container" }, [
-    _c("img", {
-      attrs: { width: "35", src: __webpack_require__(/*! ../../../../icons/ru-flag.svg */ "./resources/icons/ru-flag.svg") },
-      on: { click: _vm.switchLanguage }
-    }),
+    _vm._m(0),
     _vm._v(" "),
-    _c("i", { ref: "arrow", staticClass: "fas fa-chevron-down" })
+    _c("span", { staticClass: "vertical-divider" }),
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        staticClass: "arrow-container",
+        class: { opened: _vm.isOpened },
+        on: { click: _vm.showLanguages }
+      },
+      [_c("i", { staticClass: "fas fa-chevron-down" })]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flags-contaier" }, [
+      _c("img", {
+        attrs: { width: "30", src: __webpack_require__(/*! ../../../../icons/flags/uk.svg */ "./resources/icons/flags/uk.svg") }
+      }),
+      _vm._v(" English\n  ")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -42761,9 +42799,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-top-navbar-container" }, [
-    _c("div", [_vm._v("\n      Search\n  ")]),
+    _c(
+      "div",
+      { staticStyle: { "padding-right": "50px" } },
+      [_c("language-switcher")],
+      1
+    ),
     _vm._v(" "),
-    _c("div", [_c("language-switcher")], 1)
+    _c("div", [_vm._v("\n      Search\n  ")])
   ])
 }
 var staticRenderFns = []
@@ -59280,14 +59323,14 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/icons/ru-flag.svg":
-/*!*************************************!*\
-  !*** ./resources/icons/ru-flag.svg ***!
-  \*************************************/
+/***/ "./resources/icons/flags/uk.svg":
+/*!**************************************!*\
+  !*** ./resources/icons/flags/uk.svg ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/ru-flag.svg?e2037a0ebc084965c2c2744c68bd5837";
+module.exports = "/images/uk.svg?099a493588360b8d2dfc9c817f643ae4";
 
 /***/ }),
 
@@ -61561,6 +61604,9 @@ var getters = {
   },
   tutorial: function tutorial(state) {
     return state.tutorial;
+  },
+  allLocales: function allLocales(state) {
+    return state.allLocales;
   }
 };
 
