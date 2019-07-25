@@ -19,6 +19,12 @@ export function checkLocale(to, from, next){
             AppLocalStorage.set('locale', defaultLocale);
             return next({name: to.name, params: {locale: defaultLocale}});
         }
+    } else if(routeLocale && availableLocales.includes(routeLocale)){
+        let currentStorageLocale = AppLocalStorage.get('locale');
+        if(currentStorageLocale !== routeLocale){
+            AppLocalStorage.set('locale', routeLocale);
+            return next({name: to.name, params: {locale: routeLocale}});
+        }
     }
     return next();
 }

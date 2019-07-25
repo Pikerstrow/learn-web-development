@@ -1,7 +1,7 @@
 <template>
    <div class="row search-container d-flex justify-content-center align-items-center">
       <div class="col-11 col-md-9 col-lg-7 d-flex justify-content-center align-items-center search-round">
-         <input v-model="query" placeholder="Search on Learn Web Development" class="col-8 main-search" type="text">
+         <input v-model="query" placeholder="Search tutorial on Learn Web Development" class="col-8 main-search" type="text">
          <span class="find-btn d-flex align-items-center">Search</span>
       </div>
    </div>

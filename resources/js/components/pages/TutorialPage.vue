@@ -32,6 +32,7 @@
 
 <script>
 import TutorialSectionLessonsList from "../page_sections/tutorial_page/TutorialSectionLessonsList";
+import * as helpers from "../../helpers/functions";
 
 export default {
   computed: {
@@ -44,6 +45,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("tutorialShow", this.$route.params.tutorial);
+    helpers.moveToTop();
   }
 };
 </script>
