@@ -39,7 +39,7 @@ import * as helpers from "../../../helpers/functions";
 export default {
   computed: {
     tutorialsList() {
-      let allTutorials = this.$store.getters.tutorials;
+      let allTutorials = this.$store.getters['tutorials/tutorials'];
       return (allTutorials && allTutorials.data && allTutorials.data.length > 0)
         ? allTutorials.data.slice(0, 4)
         : [];
@@ -48,9 +48,9 @@ export default {
   components: {
     "tutorial-card": TutorialCard
   },
-  async mounted() {
+  mounted() {
     try {
-      await this.$store.dispatch("tutorialIndex");
+      this.$store.dispatch("tutorials/tutorialIndex");
     } catch (error) {
       helpers.checkErrorAndRedirect(error);
     }

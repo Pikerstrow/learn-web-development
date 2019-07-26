@@ -3,14 +3,23 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import {state} from './modules/state';
-import {getters} from './modules/getters';
-import {mutations} from './modules/mutations';
-import {actions} from './modules/actions';
+//Modules
+import tutorials from './modules/tutorials';
 
 export const store = new Vuex.Store({
-    state,
-    getters,
-    mutations,
-    actions
+    modules: {
+        tutorials
+    },
+    state: {
+
+    },
+    getters: {
+
+    },
+    mutations: {
+
+    },
+    actions: {
+
+    }
 });

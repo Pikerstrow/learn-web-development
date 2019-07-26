@@ -77,9 +77,6 @@ export default {
       }
       return links;
     }
-  },
-  mounted(){
-      console.log(this.data)
   }
 };
 </script>

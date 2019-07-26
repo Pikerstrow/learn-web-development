@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     tutorialsFromDatabase() {
-      return this.$store.getters.tutorials;
+      return this.$store.getters['tutorials/tutorials'];
     },
     paginationInfo() {
       return this.tutorialsFromDatabase
@@ -72,12 +72,12 @@ export default {
   },
   watch: {
     $route() {
-      this.$store.dispatch("tutorialIndex", this.$route.query.page);
+      this.$store.dispatch("tutorials/tutorialIndex", this.$route.query.page);
       helpers.scrollToTop();
     }
   },
   mounted() {
-    this.$store.dispatch("tutorialIndex", this.$route.query.page);
+    this.$store.dispatch("tutorials/tutorialIndex", this.$route.query.page);
     helpers.moveToTop();
   }
 };

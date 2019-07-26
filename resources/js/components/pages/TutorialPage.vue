@@ -37,14 +37,14 @@ import * as helpers from "../../helpers/functions";
 export default {
   computed: {
     tutorial() {
-      return this.$store.getters.tutorial;
+      return this.$store.getters['tutorials/tutorial'];
     }
   },
   components: {
     "sections-list": TutorialSectionLessonsList
   },
   mounted() {
-    this.$store.dispatch("tutorialShow", this.$route.params.tutorial);
+    this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
     helpers.moveToTop();
   }
 };
