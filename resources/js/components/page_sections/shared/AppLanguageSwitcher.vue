@@ -69,22 +69,23 @@ export default {
         this.isOpened = !this.isOpened;
         this.currentLocale = newLocale;
     }
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .switcher-container {
   width: 135px;
-  height: 40px;
+  height: 44px;
   padding: 5px;
-  border: 0.5px solid black;
+  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border-radius: 5px;
   position: relative;
   z-index: 3;
+  background-color: white;
 
   .falgs-container {
       width: 80%;
@@ -125,13 +126,14 @@ export default {
 	  margin: 0;
       padding: 0;
       left: 0;
-      border: 0.5px solid black;
+      border: 1px solid black;
       border-radius: 5px;
       transform: translateY(-36px);
       opacity: 0;
       transition: all 0.3s;
       transition-timing-function: ease-in-out;
       z-index: 2;
+      background-color: white;
 
       li {
         list-style: none !important;

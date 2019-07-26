@@ -2325,6 +2325,7 @@ var FLAGS_PATH = "/images/";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _shared_AppLanguageSwitcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/AppLanguageSwitcher */ "./resources/js/components/page_sections/shared/AppLanguageSwitcher.vue");
 //
 //
 //
@@ -2393,6 +2394,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     styles: Object
@@ -2404,13 +2416,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     locale: function locale() {
-      return AppLocalStorage.get('locale');
+      return AppLocalStorage.get("locale");
     }
   },
   methods: {
     toggleMenu: function toggleMenu() {
       this.isOpened = !this.isOpened;
     }
+  },
+  components: {
+    AppLanguageSwitcher: _shared_AppLanguageSwitcher__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -7681,7 +7696,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".switcher-container[data-v-5127a56c] {\n  width: 135px;\n  height: 40px;\n  padding: 5px;\n  border: 0.5px solid black;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  border-radius: 5px;\n  position: relative;\n  z-index: 3;\n}\n.switcher-container .falgs-container[data-v-5127a56c] {\n  width: 80%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.switcher-container i[data-v-5127a56c] {\n  cursor: pointer;\n}\n.switcher-container .arrow-container[data-v-5127a56c] {\n  margin: 0;\n  padding: 0;\n  display: flex;\n  transition: all 0.3s;\n  transition-timing-function: ease-in-out;\n}\n.switcher-container .arrow-container.opened[data-v-5127a56c] {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.switcher-container .vertical-divider[data-v-5127a56c] {\n  height: 25px;\n  width: 1px;\n  display: inline-block;\n  background-color: rgba(0, 0, 0, 0.2);\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);\n  margin: 0px 5px !important;\n}\n.language-list[data-v-5127a56c] {\n  position: absolute;\n  width: 135px;\n  margin: 0;\n  padding: 0;\n  left: 0;\n  border: 0.5px solid black;\n  border-radius: 5px;\n  -webkit-transform: translateY(-36px);\n          transform: translateY(-36px);\n  opacity: 0;\n  transition: all 0.3s;\n  transition-timing-function: ease-in-out;\n  z-index: 2;\n}\n.language-list li[data-v-5127a56c] {\n  list-style: none !important;\n  padding: 5px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n}\n.language-list a[data-v-5127a56c] {\n  color: inherit;\n  text-decoration: none;\n}\n.language-list.opened[data-v-5127a56c] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n  opacity: 1;\n}", ""]);
+exports.push([module.i, ".switcher-container[data-v-5127a56c] {\n  width: 135px;\n  height: 44px;\n  padding: 5px;\n  border: 1px solid black;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  border-radius: 5px;\n  position: relative;\n  z-index: 3;\n  background-color: white;\n}\n.switcher-container .falgs-container[data-v-5127a56c] {\n  width: 80%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.switcher-container i[data-v-5127a56c] {\n  cursor: pointer;\n}\n.switcher-container .arrow-container[data-v-5127a56c] {\n  margin: 0;\n  padding: 0;\n  display: flex;\n  transition: all 0.3s;\n  transition-timing-function: ease-in-out;\n}\n.switcher-container .arrow-container.opened[data-v-5127a56c] {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.switcher-container .vertical-divider[data-v-5127a56c] {\n  height: 25px;\n  width: 1px;\n  display: inline-block;\n  background-color: rgba(0, 0, 0, 0.2);\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);\n  margin: 0px 5px !important;\n}\n.language-list[data-v-5127a56c] {\n  position: absolute;\n  width: 135px;\n  margin: 0;\n  padding: 0;\n  left: 0;\n  border: 1px solid black;\n  border-radius: 5px;\n  -webkit-transform: translateY(-36px);\n          transform: translateY(-36px);\n  opacity: 0;\n  transition: all 0.3s;\n  transition-timing-function: ease-in-out;\n  z-index: 2;\n  background-color: white;\n}\n.language-list li[data-v-5127a56c] {\n  list-style: none !important;\n  padding: 5px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n}\n.language-list a[data-v-5127a56c] {\n  color: inherit;\n  text-decoration: none;\n}\n.language-list.opened[data-v-5127a56c] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n  opacity: 1;\n}", ""]);
 
 // exports
 
@@ -7700,7 +7715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".navbar-container[data-v-24db1563] {\n  width: 100%;\n  position: absolute;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n}\n.hidden-menu[data-v-24db1563] {\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  background-color: white;\n  color: #636363;\n  position: fixed;\n  top: 0;\n  right: 0;\n  z-index: 99;\n  -webkit-transform: scale(1, 0);\n          transform: scale(1, 0);\n  transition: 0.7s cubic-bezier(0.77, 0, 0.175, 1);\n  -webkit-transform-origin: 100% 0;\n          transform-origin: 100% 0;\n  transition-delay: 0.1s;\n}\n.hidden-menu__footer[data-v-24db1563] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 10%;\n  min-height: 40px;\n  background-color: #6b6b6b !important;\n  -webkit-transform: scale(1, 0);\n          transform: scale(1, 0);\n  transition-duration: 0.3s;\n}\n.hidden-menu__logo[data-v-24db1563] {\n  width: 150px;\n  opacity: 0;\n  transition-delay: 0.8s;\n  transition-duration: 0.3s;\n}\n.hidden-menu ul[data-v-24db1563] {\n  margin: 0;\n  padding: 0;\n  font-size: 24px;\n  text-align: center;\n}\n.hidden-menu ul li[data-v-24db1563] {\n  list-style: none;\n  opacity: 0;\n  transition-duration: 0.2s;\n  padding: 10px;\n}\n.hidden-menu ul li a[data-v-24db1563] {\n  text-decoration: none;\n  color: inherit;\n}\n.hidden-menu ul.active li[data-v-24db1563] {\n  opacity: 1;\n  transition: opacity 0.3s ease;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(0) {\n  transition-delay: 0.5s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(1) {\n  transition-delay: 0.55s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(2) {\n  transition-delay: 0.6s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(3) {\n  transition-delay: 0.65s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(4) {\n  transition-delay: 0.7s;\n}\n.hidden-menu.active[data-v-24db1563] {\n  -webkit-transform: scale(1, 1);\n          transform: scale(1, 1);\n}\n.hidden-menu.active .hidden-menu__footer[data-v-24db1563] {\n  -webkit-transform: scale(1, 1);\n          transform: scale(1, 1);\n}\n.hidden-menu.active .hidden-menu__logo[data-v-24db1563] {\n  opacity: 1;\n}\n.menu-div-container[data-v-24db1563] {\n  width: 33.333333%;\n  position: relative;\n}\n.logo-div a[data-v-24db1563] {\n  margin: 0 !important;\n}\n.main-menu[data-v-24db1563] {\n  min-height: 60px;\n  background-color: transparent;\n  color: black;\n  padding: 10px 0px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);\n}\n.main-menu a[data-v-24db1563] {\n  margin: 7px;\n  color: black;\n  text-decoration: none;\n  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);\n  transition-duration: 0.3s;\n}\n.main-menu a[data-v-24db1563]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  color: #2f2f2f;\n}\n.main-menu .menu-li[data-v-24db1563] {\n  padding: 5px 10px;\n  font-family: \"Source Sans Pro\", sans-serif;\n  font-size: 18px;\n}\n.main-menu .hamburger.active[data-v-24db1563] {\n  position: fixed;\n}\n.main-menu .hamburger[data-v-24db1563] {\n  width: 46px;\n  height: 44px;\n  padding: 5px;\n  border: 1px solid black;\n  border-radius: 5px;\n  cursor: pointer;\n  position: absolute;\n  z-index: 999;\n}\n.main-menu .hamburger .line[data-v-24db1563] {\n  width: 30px;\n  height: 3px;\n  background-color: black;\n  position: absolute;\n  left: 7px;\n  top: 10px;\n  transition-duration: 0.25s;\n}\n.main-menu .hamburger .line[data-v-24db1563]:nth-child(2) {\n  top: 20px;\n}\n.main-menu .hamburger .line[data-v-24db1563]:nth-child(3) {\n  top: 30px;\n}\n.logo-image[data-v-24db1563] {\n  width: 200px;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(1) {\n  top: 20px !important;\n  -webkit-transform: rotate(135deg);\n  transform: rotate(135deg);\n  transition-duration: 0.25s;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(2) {\n  opacity: 0;\n  transition-duration: 0.15s;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(3) {\n  top: 20px !important;\n  -webkit-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n  transition-duration: 0.25s;\n}\n@media screen and (max-width: 1024px) {\n.logo-image[data-v-24db1563] {\n    width: 180px;\n}\n}\n@media screen and (max-width: 767px) {\n.header-background[data-v-24db1563] {\n    width: 120px;\n}\n.social-container[data-v-24db1563] {\n    display: none !important;\n}\n}", ""]);
+exports.push([module.i, ".navbar-container[data-v-24db1563] {\n  width: 100%;\n  position: absolute;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n}\n.hidden-menu[data-v-24db1563] {\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  background-color: white;\n  color: #636363;\n  position: fixed;\n  top: 0;\n  right: 0;\n  z-index: 99;\n  -webkit-transform: scale(1, 0);\n          transform: scale(1, 0);\n  transition: 0.7s cubic-bezier(0.77, 0, 0.175, 1);\n  -webkit-transform-origin: 100% 0;\n          transform-origin: 100% 0;\n  transition-delay: 0.1s;\n}\n.hidden-menu__footer[data-v-24db1563] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 10%;\n  min-height: 40px;\n  background-color: #6b6b6b !important;\n  -webkit-transform: scale(1, 0);\n          transform: scale(1, 0);\n  transition-duration: 0.3s;\n}\n.hidden-menu__logo[data-v-24db1563] {\n  width: 150px;\n  opacity: 0;\n  transition-delay: 0.8s;\n  transition-duration: 0.3s;\n}\n.hidden-menu ul[data-v-24db1563] {\n  margin: 0;\n  padding: 0;\n  font-size: 24px;\n  text-align: center;\n}\n.hidden-menu ul li[data-v-24db1563] {\n  list-style: none;\n  opacity: 0;\n  transition-duration: 0.2s;\n  padding: 10px;\n}\n.hidden-menu ul li a[data-v-24db1563] {\n  text-decoration: none;\n  color: inherit;\n}\n.hidden-menu ul.active li[data-v-24db1563] {\n  opacity: 1;\n  transition: opacity 0.3s ease;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(0) {\n  transition-delay: 0.5s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(1) {\n  transition-delay: 0.55s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(2) {\n  transition-delay: 0.6s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(3) {\n  transition-delay: 0.65s;\n}\n.hidden-menu ul.active li[data-v-24db1563]:nth-child(4) {\n  transition-delay: 0.7s;\n}\n.hidden-menu.active[data-v-24db1563] {\n  -webkit-transform: scale(1, 1);\n          transform: scale(1, 1);\n}\n.hidden-menu.active .hidden-menu__footer[data-v-24db1563] {\n  -webkit-transform: scale(1, 1);\n          transform: scale(1, 1);\n}\n.hidden-menu.active .hidden-menu__logo[data-v-24db1563] {\n  opacity: 1;\n}\n.menu-div-container[data-v-24db1563] {\n  width: 33.333333%;\n  position: relative;\n}\n.logo-div a[data-v-24db1563] {\n  margin: 0 !important;\n}\n.main-menu[data-v-24db1563] {\n  min-height: 60px;\n  background-color: transparent;\n  color: black;\n  padding: 10px 0px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);\n}\n.main-menu a[data-v-24db1563] {\n  margin: 7px;\n  color: black;\n  text-decoration: none;\n  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);\n  transition-duration: 0.3s;\n}\n.main-menu a[data-v-24db1563]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  color: #2f2f2f;\n}\n.main-menu .menu-li[data-v-24db1563] {\n  padding: 5px 10px;\n  font-family: \"Source Sans Pro\", sans-serif;\n  font-size: 18px;\n}\n.main-menu .hamburger.active[data-v-24db1563] {\n  position: fixed;\n}\n.main-menu .hamburger-menu-container[data-v-24db1563] {\n  width: 55px;\n  margin-left: 15px;\n}\n.main-menu .hamburger[data-v-24db1563] {\n  width: 46px;\n  height: 44px;\n  padding: 5px;\n  border: 1px solid black;\n  border-radius: 5px;\n  cursor: pointer;\n  position: absolute;\n  z-index: 999;\n}\n.main-menu .hamburger .line[data-v-24db1563] {\n  width: 30px;\n  height: 3px;\n  background-color: black;\n  position: absolute;\n  left: 7px;\n  top: 10px;\n  transition-duration: 0.25s;\n}\n.main-menu .hamburger .line[data-v-24db1563]:nth-child(2) {\n  top: 20px;\n}\n.main-menu .hamburger .line[data-v-24db1563]:nth-child(3) {\n  top: 30px;\n}\n.logo-image[data-v-24db1563] {\n  width: 200px;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(1) {\n  top: 20px !important;\n  -webkit-transform: rotate(135deg);\n  transform: rotate(135deg);\n  transition-duration: 0.25s;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(2) {\n  opacity: 0;\n  transition-duration: 0.15s;\n}\n.hamburger div.active[data-v-24db1563]:nth-child(3) {\n  top: 20px !important;\n  -webkit-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n  transition-duration: 0.25s;\n}\n@media screen and (max-width: 1024px) {\n.logo-image[data-v-24db1563] {\n    width: 180px;\n}\n}\n@media screen and (max-width: 767px) {\n.header-background[data-v-24db1563] {\n    width: 120px;\n}\n.social-container[data-v-24db1563] {\n    display: none !important;\n}\n}", ""]);
 
 // exports
 
@@ -41801,29 +41816,27 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "d-flex menu-div-container" }, [
-              _c("div", { staticClass: "logo-text d-flex" }, [
-                _c(
-                  "div",
-                  { staticClass: "align-self-center logo-div" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: { name: "main", params: { locale: _vm.locale } }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "logo-image",
-                          attrs: { src: __webpack_require__(/*! ../../../../images/logo.png */ "./resources/images/logo.png") }
-                        })
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "align-self-center logo-div" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "main", params: { locale: _vm.locale } }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "logo-image",
+                        attrs: { src: __webpack_require__(/*! ../../../../images/logo.png */ "./resources/images/logo.png") }
+                      })
+                    ]
+                  )
+                ],
+                1
+              )
             ]),
             _vm._v(" "),
             _vm._m(0),
@@ -41835,32 +41848,44 @@ var render = function() {
                   "d-flex justify-content-end align-items-center menu-div-container"
               },
               [
+                _c("AppLanguageSwitcher"),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
                     staticClass:
-                      "hamburger d-flex flex-column align-items-center",
-                    class: { active: _vm.isOpened },
-                    on: { click: _vm.toggleMenu }
+                      "d-flex justify-content-end align-items-center hamburger-menu-container"
                   },
                   [
-                    _c("div", {
-                      staticClass: "line",
-                      class: { active: _vm.isOpened }
-                    }),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass: "line",
-                      class: { active: _vm.isOpened }
-                    }),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass: "line",
-                      class: { active: _vm.isOpened }
-                    })
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "hamburger d-flex flex-column align-items-center",
+                        class: { active: _vm.isOpened },
+                        on: { click: _vm.toggleMenu }
+                      },
+                      [
+                        _c("div", {
+                          staticClass: "line",
+                          class: { active: _vm.isOpened }
+                        }),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "line",
+                          class: { active: _vm.isOpened }
+                        }),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "line",
+                          class: { active: _vm.isOpened }
+                        })
+                      ]
+                    )
                   ]
                 )
-              ]
+              ],
+              1
             )
           ]
         ),
@@ -41896,11 +41921,7 @@ var render = function() {
                             to: { name: "main", params: { locale: _vm.locale } }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                     Main\n                  "
-                          )
-                        ]
+                        [_vm._v("Main")]
                       )
                     ],
                     1
@@ -41921,11 +41942,7 @@ var render = function() {
                             to: { name: "tutorials", query: { page: 1 } }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                     Tutorials\n                  "
-                          )
-                        ]
+                        [_vm._v("Tutorials")]
                       )
                     ],
                     1
@@ -41939,9 +41956,7 @@ var render = function() {
                     },
                     [
                       _c("router-link", { attrs: { tag: "a", to: "" } }, [
-                        _vm._v(
-                          "\n                     Guest Book\n                  "
-                        )
+                        _vm._v("Guest Book")
                       ])
                     ],
                     1
@@ -41955,9 +41970,7 @@ var render = function() {
                     },
                     [
                       _c("router-link", { attrs: { tag: "a", to: "" } }, [
-                        _vm._v(
-                          "\n                     Blog\n                  "
-                        )
+                        _vm._v("Blog")
                       ])
                     ],
                     1
