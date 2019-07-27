@@ -28,8 +28,8 @@
             ></tutorial-card>
           </router-link>
         </div>
+
         <pagination-links v-if="paginationInfo" :data="paginationInfo"></pagination-links>
-        <!-- <pagination-test v-if="paginationInfo" :data="paginationInfoTest"></pagination-test> -->
 
       </div>
     </main>

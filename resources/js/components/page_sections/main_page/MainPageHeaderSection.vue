@@ -10,7 +10,10 @@
                   <span class="description">Learn with us! Code with us! Become a master with us!</span>
                </div>
                <div class="col-12 d-flex justify-content-center">
-                  <a href="#" class="start-button text-center">choose tutorial</a>
+                   <router-link :to="{name: 'tutorials', query: {page: 1}}" class="start-button text-center">
+                       choose tutorial
+                   </router-link>
+                  <!-- <a href="#" class="start-button text-center">choose tutorial</a> -->
                </div>
             </div>
          </div>

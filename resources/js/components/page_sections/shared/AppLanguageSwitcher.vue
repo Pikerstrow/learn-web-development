@@ -2,12 +2,12 @@
   <div style="position: relative">
     <div class="switcher-container">
       <div class="falgs-container">
-          <div v-if="currentLocale === 'en'" class="flags-contaier">
-        <img width="30" :src="flag('en')" /> English
-      </div>
-      <div v-else class="flags-contaier">
-        <img width="30" :src="flag('ru')" /> Русский
-      </div>
+        <div v-if="currentLocale === 'en'" class="flags-contaier">
+            <img width="30" :src="flag('en')" /> <span class="language-name">English</span>
+        </div>
+        <div v-else class="flags-contaier">
+            <img width="30" :src="flag('ru')" /> <span class="language-name">Русский</span>
+        </div>
       </div>
 
       <span class="vertical-divider"></span>
@@ -18,8 +18,8 @@
     </div>
     <ul class="language-list" :class="{'opened': isOpened}">
       <li v-for="(locale, index) in filteredLocales" :key="index">
-        <router-link @click.native="toggleLanguage(locale.short)" :to="{params: {locale: locale.short}}">
-          <img width="30" :src="flag(locale.short)" /> {{ locale.full }}
+        <router-link @click.native="toggleLanguage(locale.short)" :to="{name: currentRouteInfo.name, params: setParamsLocale(locale.short), query: currentRouteInfo.query}">
+          <img width="30" :src="flag(locale.short)" /> <span class="language-name">{{ locale.full }}</span>
         </router-link>
       </li>
     </ul>
@@ -49,13 +49,18 @@ export default {
         set(value){
             this.locale = value;
         }
-
     },
     filteredLocales(){
         let allLocales = [{short: "en", full: "English"}, {short: "ru", full: "Русский"}];
         return allLocales.filter((locale) => {
             return locale.short !== this.locale;
         })
+    },
+    currentRouteInfo(){
+        return {
+            name: this.$route.name,
+            query: this.$route.query
+        }
     }
   },
   methods: {
@@ -68,6 +73,13 @@ export default {
     toggleLanguage(newLocale) {
         this.isOpened = !this.isOpened;
         this.currentLocale = newLocale;
+    },
+    setParamsLocale(locale){
+        let params = this.$route.params;
+        if(params.hasOwnProperty('locale')){
+            params.locale = locale
+        }
+        return params;
     }
   },
 };
@@ -153,6 +165,19 @@ export default {
       transform: translateY(0);
       opacity: 1;
   }
+
+  @media screen and (max-width: 667px) {
+  .language-name {
+    display: none;
+  }
+  .switcher-container {
+      width: 70px;
+  }
+  .language-list {
+    width: 70px;
+  }
+}
+
 </style>
 
 

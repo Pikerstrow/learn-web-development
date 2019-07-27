@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="page pagination" class="pagination_links">
+  <nav v-if="this.totalPagesNumber > 2" aria-label="page pagination" class="pagination_links">
     <ul ref="paginationUl" v-if="data" class="pagination">
       <li :class="{'disabled': data.current_page === 1}" class="page-item">
         <router-link

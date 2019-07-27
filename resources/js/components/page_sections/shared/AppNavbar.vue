@@ -322,5 +322,21 @@ export default {
   .social-container {
     display: none !important;
   }
+  .menu-div-container {
+      width: 40%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo-image {
+    width: 160px;
+  }
+
+}
+
+@media screen and (max-width: 325px) {
+  .logo-image {
+    width: 155px;
+  }
 }
 </style>

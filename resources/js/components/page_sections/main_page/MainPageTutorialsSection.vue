@@ -255,6 +255,18 @@ a.more {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .tutorials-list-container {
+    justify-content: center !important;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      width: 95%;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   .tutorial-block {
     width: 95%;

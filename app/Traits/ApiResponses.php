@@ -11,7 +11,7 @@ trait ApiResponses
     protected $errorMessage          = "An error occurred! Please try again later!";
     protected $successCreatedMessage = "Data was created successfully!";
     protected $successUpdateMessage  = "Data was updated successfully!";
-    protected $successDestroyMessage = "Data was updated successfully!";
+    protected $successDestroyMessage = "Data was destroyed successfully!";
     protected $notFoundMessage       = "Page or requested data not found!";
 
 
