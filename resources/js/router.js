@@ -52,7 +52,6 @@ const routes = [
                 name: 'tutorial',
                 component: TutorialPage,
                 meta: {
-                    title: {param: 'tutorial'},
                     mainNavigationStyles: {
                         backgroundColor: 'white',
                         borderBottom: 'none',

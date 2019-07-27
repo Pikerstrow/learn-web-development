@@ -1,14 +1,9 @@
 <template>
   <div class="main-top-navbar-container">
-    <!-- <div class="align-self-center logo-div">
-      <router-link :to="{name: 'main', params: {locale: locale}}">
-        <img class="logo-image" src="../../../../images/logo.png" />
-      </router-link>
-    </div> -->
     <div>
-        <top-search class="search-component"></top-search>
+        <top-search class="search-component" :background="'white'"></top-search>
     </div>
-    <div style="padding-right: 50px">
+    <div>
         <language-switcher></language-switcher>
     </div>
   </div>

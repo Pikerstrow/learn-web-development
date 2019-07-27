@@ -2095,19 +2095,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     tutorialsList: function tutorialsList() {
-      var allTutorials = this.$store.getters['tutorials/tutorials'];
+      var allTutorials = this.$store.getters["tutorials/tutorials"];
       return allTutorials && allTutorials.data && allTutorials.data.length > 0 ? allTutorials.data.slice(0, 4) : [];
     }
   },
   components: {
     "tutorial-card": _tutorials_page_TutorialCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    try {
-      this.$store.dispatch("tutorials/tutorialIndex");
-    } catch (error) {
-      _helpers_functions__WEBPACK_IMPORTED_MODULE_1__["checkErrorAndRedirect"](error);
-    }
+  created: function created() {
+    this.$store.dispatch("tutorials/tutorialIndex");
   }
 });
 
@@ -2695,11 +2691,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3033,10 +3024,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    tutorial: function tutorial() {
+      return this.$store.getters['tutorials/tutorial'];
+    },
+    dataIsLoaded: function dataIsLoaded() {
+      return this.tutorial ? true : false;
+    }
+  },
   components: {
-    'top-navbar': _page_sections_tutorial_lessons_LessonsTopNavbar__WEBPACK_IMPORTED_MODULE_0__["default"]
+    "top-navbar": _page_sections_tutorial_lessons_LessonsTopNavbar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  created: function created() {
+    this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
+    console.log(this.$route.params.tutorial);
   }
 });
 
@@ -3090,13 +3122,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     tutorial: function tutorial() {
-      return this.$store.getters['tutorials/tutorial'];
+      return this.$store.getters["tutorials/tutorial"];
     }
   },
   components: {
     "sections-list": _page_sections_tutorial_page_TutorialSectionLessonsList__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
+  created: function created() {
+    console.log(this.$route.params.tutorial);
     this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
     _helpers_functions__WEBPACK_IMPORTED_MODULE_1__["moveToTop"]();
   }
@@ -8012,7 +8045,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".lessons-page-container[data-v-1a4b9206] {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n}", ""]);
+exports.push([module.i, ".main-container[data-v-1a4b9206] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n.main-container .sidebar-container[data-v-1a4b9206] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 280px;\n  background-color: white;\n  color: white;\n  min-height: 100%;\n}\n.main-container .lessons-page-container[data-v-1a4b9206] {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  width: calc(100% - 280px);\n  height: 100%;\n  background-color: #dfdfdf;\n}\n.main-container .lessons-page-container .container[data-v-1a4b9206] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.main-container .lessons-page-container .container-header[data-v-1a4b9206] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  height: auto;\n  padding: 0px 50px;\n}", ""]);
 
 // exports
 
@@ -42535,14 +42568,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-top-navbar-container" }, [
-    _c("div", [_c("top-search", { staticClass: "search-component" })], 1),
-    _vm._v(" "),
     _c(
       "div",
-      { staticStyle: { "padding-right": "50px" } },
-      [_c("language-switcher")],
+      [
+        _c("top-search", {
+          staticClass: "search-component",
+          attrs: { background: "white" }
+        })
+      ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("div", [_c("language-switcher")], 1)
   ])
 }
 var staticRenderFns = []
@@ -42975,12 +43012,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "lessons-page-container" },
-    [_c("top-navbar"), _vm._v(" "), _c("router-view")],
-    1
-  )
+  return _c("div", { staticClass: "main-container" }, [
+    _c("div", { staticClass: "sidebar-container" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "lessons-page-container" }, [
+      _c("div", { staticClass: "container-header" }, [
+        _c("div", { staticClass: "breadcrumbs-container" }, [
+          _vm.dataIsLoaded
+            ? _c("div", { staticClass: "breadcrumbs" }, [
+                _c("ul", [
+                  _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: { name: "main" } } }, [
+                        _vm._v("Main")
+                      ]),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: { name: "tutorials", query: { page: 1 } }
+                          }
+                        },
+                        [_vm._v("Tutorials")]
+                      ),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "tutorial" } } },
+                        [_vm._v(_vm._s(_vm.tutorial.attributes.title))]
+                      ),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "fa-xs fas fa-chevron-right" })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("li", [_vm._v(_vm._s())])
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "top-navbar-container" },
+          [_c("top-navbar")],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-container" }, [_c("router-view")], 1)
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -61400,9 +61501,6 @@ var routes = [{
     name: 'tutorial',
     component: _components_pages_TutorialPage__WEBPACK_IMPORTED_MODULE_5__["default"],
     meta: {
-      title: {
-        param: 'tutorial'
-      },
       mainNavigationStyles: {
         backgroundColor: 'white',
         borderBottom: 'none',
@@ -61500,7 +61598,7 @@ __webpack_require__.r(__webpack_exports__);
     tutorialIndex: function tutorialIndex(_ref) {
       var commit = _ref.commit;
       var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-      axios.get("/api/tutorial?page=".concat(page)).then(function (response) {
+      return axios.get("/api/tutorial?page=".concat(page)).then(function (response) {
         commit('TUTORIAL_INDEX', response.data);
       })["catch"](function (error) {
         _helpers_functions__WEBPACK_IMPORTED_MODULE_0__["checkErrorAndRedirect"](error);
@@ -61508,7 +61606,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     tutorialShow: function tutorialShow(_ref2, tutorial) {
       var commit = _ref2.commit;
-      axios.get("/api/tutorial/".concat(tutorial)).then(function (response) {
+      return axios.get("/api/tutorial/".concat(tutorial)).then(function (response) {
         commit('TUTORIAL_SHOW', response.data);
       })["catch"](function (error) {
         _helpers_functions__WEBPACK_IMPORTED_MODULE_0__["checkErrorAndRedirect"](error);

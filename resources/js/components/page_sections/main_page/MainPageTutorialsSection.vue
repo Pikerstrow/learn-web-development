@@ -24,7 +24,7 @@
       </div>
       <div class="row d-flex justify-content-center row-no-margin">
         <div class="col-12 d-flex justify-content-center align-items-center">
-            <router-link :to="{name: 'tutorials', query: {page: 1}}" class="more">more...</router-link>
+          <router-link :to="{name: 'tutorials', query: {page: 1}}" class="more">more...</router-link>
         </div>
       </div>
     </div>
@@ -39,8 +39,8 @@ import * as helpers from "../../../helpers/functions";
 export default {
   computed: {
     tutorialsList() {
-      let allTutorials = this.$store.getters['tutorials/tutorials'];
-      return (allTutorials && allTutorials.data && allTutorials.data.length > 0)
+      let allTutorials = this.$store.getters["tutorials/tutorials"];
+      return allTutorials && allTutorials.data && allTutorials.data.length > 0
         ? allTutorials.data.slice(0, 4)
         : [];
     }
@@ -48,12 +48,8 @@ export default {
   components: {
     "tutorial-card": TutorialCard
   },
-  mounted() {
-    try {
-      this.$store.dispatch("tutorials/tutorialIndex");
-    } catch (error) {
-      helpers.checkErrorAndRedirect(error);
-    }
+  created() {
+    this.$store.dispatch("tutorials/tutorialIndex");
   }
 };
 </script>
