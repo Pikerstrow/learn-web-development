@@ -7,7 +7,7 @@
       <li v-for="(lesson, index) in section.attributes.lessons" :key="lesson.attributes.id">
         <span class="lesson-number">{{ sectionNumber }}.{{ index + 1}} </span>
         <router-link
-          :to="{name: 'lesson', params: {tutorial: tutorialSlug, lesson: lesson.attributes.slug }}"
+          :to="{name: 'lesson', params: {locale: locale, tutorial: tutorialSlug, lesson: lesson.attributes.slug }}"
         >{{ lesson.attributes.title }}</router-link>
       </li>
     </ol>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import AppLocalStorage from "../../../helpers/AppLocalStorage";
+
 export default {
   props: {
     section: {
@@ -29,6 +31,11 @@ export default {
         type: Number,
         required: true
     }
+  },
+  computed: {
+      locale(){
+          return AppLocalStorage.has('locale') ? AppLocalStorage.get('locale') : 'en'
+      }
   }
 };
 </script>

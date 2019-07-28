@@ -36,11 +36,15 @@
 
 <script>
 import LessonsTopNavbar from "../page_sections/tutorial_lessons/LessonsTopNavbar";
+import { setTimeout } from 'timers';
 
 export default {
     computed: {
         tutorial(){
             return this.$store.getters['tutorials/tutorial'];
+        },
+        currentLesson(){
+            // return
         },
         dataIsLoaded(){
             return this.tutorial ? true : false;
@@ -51,7 +55,6 @@ export default {
   },
   created(){
       this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
-      console.log(this.$route.params.tutorial)
   }
 };
 </script>

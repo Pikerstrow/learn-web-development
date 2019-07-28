@@ -43,8 +43,7 @@ export default {
   components: {
     "sections-list": TutorialSectionLessonsList
   },
-  created() {
-    console.log(this.$route.params.tutorial);
+  mounted(){
     this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
     helpers.moveToTop();
   }

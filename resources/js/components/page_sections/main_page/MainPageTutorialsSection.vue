@@ -6,11 +6,11 @@
           <h2 class="text-center section-heading">Available tutorials</h2>
         </div>
       </div>
-      <div class="row d-flex justify-content-between tutorials-list-container row-no-margin">
+      <div v-if="tutorialsList" class="row d-flex justify-content-between tutorials-list-container row-no-margin">
         <router-link
           v-for="(tutorialInfo, index) in tutorialsList"
           :key="index"
-          :to="{name: 'tutorial', params: {tutorial: tutorialInfo.attributes.slug.toLowerCase()}}"
+          :to="{name: 'tutorial', params: {locale: locale, tutorial: tutorialInfo.attributes.slug.toLowerCase()}}"
         >
           <tutorial-card
             :ratingInfo="tutorialInfo.attributes.ratingInfo"
@@ -18,7 +18,6 @@
             :description="tutorialInfo.attributes.description"
             :info="tutorialInfo.attributes.info"
             :styles="tutorialInfo.attributes.styles"
-            :key="index"
           ></tutorial-card>
         </router-link>
       </div>
@@ -35,6 +34,7 @@
 <script>
 import TutorialCard from "../tutorials_page/TutorialCard";
 import * as helpers from "../../../helpers/functions";
+import AppLocalStorage from "../../../helpers/AppLocalStorage";
 
 export default {
   computed: {
@@ -42,7 +42,10 @@ export default {
       let allTutorials = this.$store.getters["tutorials/tutorials"];
       return allTutorials && allTutorials.data && allTutorials.data.length > 0
         ? allTutorials.data.slice(0, 4)
-        : [];
+        : null;
+    },
+    locale(){
+        return AppLocalStorage.has('locale') ? AppLocalStorage.get('locale') : 'en';
     }
   },
   components: {

@@ -2056,6 +2056,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tutorials_page_TutorialCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../tutorials_page/TutorialCard */ "./resources/js/components/page_sections/tutorials_page/TutorialCard.vue");
 /* harmony import */ var _helpers_functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helpers/functions */ "./resources/js/helpers/functions.js");
+/* harmony import */ var _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../helpers/AppLocalStorage */ "./resources/js/helpers/AppLocalStorage.js");
 //
 //
 //
@@ -2089,14 +2090,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     tutorialsList: function tutorialsList() {
       var allTutorials = this.$store.getters["tutorials/tutorials"];
-      return allTutorials && allTutorials.data && allTutorials.data.length > 0 ? allTutorials.data.slice(0, 4) : [];
+      return allTutorials && allTutorials.data && allTutorials.data.length > 0 ? allTutorials.data.slice(0, 4) : null;
+    },
+    locale: function locale() {
+      return _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_2__["default"].has('locale') ? _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_2__["default"].get('locale') : 'en';
     }
   },
   components: {
@@ -2711,6 +2715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/AppLocalStorage */ "./resources/js/helpers/AppLocalStorage.js");
 //
 //
 //
@@ -2727,6 +2732,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     section: {
@@ -2740,6 +2746,11 @@ __webpack_require__.r(__webpack_exports__);
     sectionNumber: {
       type: Number,
       required: true
+    }
+  },
+  computed: {
+    locale: function locale() {
+      return _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__["default"].has('locale') ? _helpers_AppLocalStorage__WEBPACK_IMPORTED_MODULE_0__["default"].get('locale') : 'en';
     }
   }
 });
@@ -3017,6 +3028,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_sections_tutorial_lessons_LessonsTopNavbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../page_sections/tutorial_lessons/LessonsTopNavbar */ "./resources/js/components/page_sections/tutorial_lessons/LessonsTopNavbar.vue");
+/* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! timers */ "./node_modules/timers-browserify/main.js");
+/* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(timers__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -3054,10 +3067,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     tutorial: function tutorial() {
       return this.$store.getters['tutorials/tutorial'];
+    },
+    currentLesson: function currentLesson() {// return
     },
     dataIsLoaded: function dataIsLoaded() {
       return this.tutorial ? true : false;
@@ -3068,7 +3084,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
-    console.log(this.$route.params.tutorial);
   }
 });
 
@@ -3128,8 +3143,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     "sections-list": _page_sections_tutorial_page_TutorialSectionLessonsList__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  created: function created() {
-    console.log(this.$route.params.tutorial);
+  mounted: function mounted() {
     this.$store.dispatch("tutorials/tutorialShow", this.$route.params.tutorial);
     _helpers_functions__WEBPACK_IMPORTED_MODULE_1__["moveToTop"]();
   }
@@ -3149,7 +3163,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_sections_tutorials_page_TutorialCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../page_sections/tutorials_page/TutorialCard */ "./resources/js/components/page_sections/tutorials_page/TutorialCard.vue");
 /* harmony import */ var _page_sections_shared_AppPagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../page_sections/shared/AppPagination */ "./resources/js/components/page_sections/shared/AppPagination.vue");
 /* harmony import */ var _helpers_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/functions */ "./resources/js/helpers/functions.js");
-//
 //
 //
 //
@@ -41509,43 +41522,45 @@ var render = function() {
       _c("div", { staticClass: "app-container" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "row d-flex justify-content-between tutorials-list-container row-no-margin"
-          },
-          _vm._l(_vm.tutorialsList, function(tutorialInfo, index) {
-            return _c(
-              "router-link",
+        _vm.tutorialsList
+          ? _c(
+              "div",
               {
-                key: index,
-                attrs: {
-                  to: {
-                    name: "tutorial",
-                    params: {
-                      tutorial: tutorialInfo.attributes.slug.toLowerCase()
-                    }
-                  }
-                }
+                staticClass:
+                  "row d-flex justify-content-between tutorials-list-container row-no-margin"
               },
-              [
-                _c("tutorial-card", {
-                  key: index,
-                  attrs: {
-                    ratingInfo: tutorialInfo.attributes.ratingInfo,
-                    title: tutorialInfo.attributes.title,
-                    description: tutorialInfo.attributes.description,
-                    info: tutorialInfo.attributes.info,
-                    styles: tutorialInfo.attributes.styles
-                  }
-                })
-              ],
+              _vm._l(_vm.tutorialsList, function(tutorialInfo, index) {
+                return _c(
+                  "router-link",
+                  {
+                    key: index,
+                    attrs: {
+                      to: {
+                        name: "tutorial",
+                        params: {
+                          locale: _vm.locale,
+                          tutorial: tutorialInfo.attributes.slug.toLowerCase()
+                        }
+                      }
+                    }
+                  },
+                  [
+                    _c("tutorial-card", {
+                      attrs: {
+                        ratingInfo: tutorialInfo.attributes.ratingInfo,
+                        title: tutorialInfo.attributes.title,
+                        description: tutorialInfo.attributes.description,
+                        info: tutorialInfo.attributes.info,
+                        styles: tutorialInfo.attributes.styles
+                      }
+                    })
+                  ],
+                  1
+                )
+              }),
               1
             )
-          }),
-          1
-        ),
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "div",
@@ -42640,6 +42655,7 @@ var render = function() {
                       to: {
                         name: "lesson",
                         params: {
+                          locale: _vm.locale,
                           tutorial: _vm.tutorialSlug,
                           lesson: lesson.attributes.slug
                         }
@@ -43273,7 +43289,6 @@ var render = function() {
                     },
                     [
                       _c("tutorial-card", {
-                        key: index,
                         attrs: {
                           ratingInfo: tutorialInfo.attributes.ratingInfo,
                           title: tutorialInfo.attributes.title,

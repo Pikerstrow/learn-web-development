@@ -24,7 +24,6 @@
               :description="tutorialInfo.attributes.description"
               :info="tutorialInfo.attributes.info"
               :styles="tutorialInfo.attributes.styles"
-              :key="index"
             ></tutorial-card>
           </router-link>
         </div>
