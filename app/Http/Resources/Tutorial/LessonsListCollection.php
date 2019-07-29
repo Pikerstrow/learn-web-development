@@ -20,11 +20,12 @@ class LessonsListCollection extends JsonResource
                 'id' => $this->id,
                 'title' => $this->title,
                 'slug' => $this->slug,
+                'body' => $this->body,
+                'created_at' => $this->created_at
              ],
             'links' => [
-                'self' => route('section.show', [$this->section->tutorial->id, $this->section->id, $this->id])
+                'self' => route('lesson.show', [$this->section->tutorial->slug, $this->section->slug, $this->slug])
             ]
-
         ];
     }
 }

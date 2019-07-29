@@ -4,6 +4,7 @@ namespace App\Http\Resources\Tutorial;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 class TutorialSectionResource extends JsonResource
 {
     /**
@@ -14,6 +15,20 @@ class TutorialSectionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'section',
+            'attributes' => [
+                'id' => $this->id,
+                'title' => $this->title,
+                'slug' => $this->slug,
+                'description' => $this->description,
+                'relations' => [
+                    'lessons' => LessonsListCollection::collection($this->lessons)
+                ]
+             ],
+            'links' => [
+                'self' => route('section.show', [$this->section->tutorial->slug, $this->slug])
+            ]
+        ];
     }
 }

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('/tutorial', 'Tutorial\TutorialController');
-Route::apiResource('/tutorial/{tutorial}/section', 'Tutorial\TutorialSectionController');
-Route::apiResource('/tutorial/{tutorial}/section/{section}/lesson', 'Tutorial\TutorialController');
+Route::apiResource('/{tutorial}/section', 'Tutorial\TutorialSectionController');
+Route::apiResource('/{tutorial}/{section}/lesson', 'Tutorial\LessonController');
 
 
